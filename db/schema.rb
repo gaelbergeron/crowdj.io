@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20151009220204) do
   create_table "trackpicks", force: :cascade do |t|
     t.integer  "playlist_id"
     t.integer  "track_id"
-    t.integer  "contributor_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "tracks", force: :cascade do |t|
