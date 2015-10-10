@@ -1,0 +1,2 @@
+class TrackpicksController < ApplicationController
+end
