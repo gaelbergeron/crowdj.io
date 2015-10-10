@@ -7,7 +7,20 @@
   <%= javascript_include_tag Sync.adapter_javascript_url %>
   <%= csrf_meta_tags %>
 </head>
+
+<header>
+  <%if current_user%>
+    <a href='/logout'>Logout</a>
+  <%else%>
+    <a href='/login'>Login</a>
+    <a href='/signup'>Sign Up</a>
+  <%end%>
+</header>
+
+
 <body>
+
+
   <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
   <% end %>
