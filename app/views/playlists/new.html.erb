@@ -5,7 +5,9 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </p>
-
+  <p>
+    <%= f.hidden_field :user_id, :value => 1 %>
+  </p>
   <p>
     <%= f.submit %>
   </p>
