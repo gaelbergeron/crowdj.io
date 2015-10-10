@@ -18,8 +18,11 @@ Rails.application.routes.draw do
 
 
     resources :playlists do
-      resources :trackpicks
+      resources :trackpicks, controller: 'playlists/trackpicks'
     end
+
+  # post 'trackpicks/' => 'trackpicks#create'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

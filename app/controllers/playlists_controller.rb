@@ -14,7 +14,6 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-
     @playlist = Playlist.new(playlist_params)
 
     if @playlist.save
