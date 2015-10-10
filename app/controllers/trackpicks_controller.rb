@@ -8,6 +8,4 @@ class TrackpicksController < ApplicationController
     @params = params[:name]
     @tracks = client.get('/tracks',:q => "#{params[:name]}")
   end
-
-
 end

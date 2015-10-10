@@ -1,4 +1,5 @@
-<%= form_for :playlist_trackpicks, url: playlist_trackpicks_path, method: "post" do |f| %>
+<%= form_for :trackpick, url: playlist_trackpicks_path, method: "post" do |f| %>
+
   <p>
     <%= f.label :Search %>
     <%= f.text_field :name %>
@@ -6,5 +7,4 @@
   <p>
     <%= f.submit %>
   </p>
-
 <% end %>
