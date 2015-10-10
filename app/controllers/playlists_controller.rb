@@ -18,8 +18,6 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    p params
-    p playlist_params
     @playlist = Playlist.new(playlist_params)
 
     if @playlist.save

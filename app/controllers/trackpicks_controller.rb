@@ -1,12 +1,11 @@
 class TrackpicksController < ApplicationController
 
 	def new
-		p "Hi I am here"
+
 	end
 
   def create
-    p params
-    p params[:trackpick]
+    @params = params[:name]
+    @tracks = client.get('/tracks',:q => "#{params[:name]}")
   end
-
 end
