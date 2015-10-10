@@ -1,0 +1,12 @@
+<h1>Create a new playlist</h1>
+
+<%= form_for :playlist do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
