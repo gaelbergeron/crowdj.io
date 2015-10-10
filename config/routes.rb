@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
   devise_for :users
-  devise_for :models
 
-  resources :playlists do
-    resources :trackpicks
+  devise_scope :user do
+    get "login", to: "users/sessions#new"
+    get "signup", to: "users/sessions#create"
+    get "logout", to: "users/sessions#destroy"
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
+    resources :playlists do
+      resources :trackpicks
+    end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
