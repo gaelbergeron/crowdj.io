@@ -1,0 +1,17 @@
+<%= form_for :trackpick, url: playlist_trackpicks_path, method: "post" do |f| %>
+  <p>
+    <%= f.hidden_field :track_url => "http://localhost:3000/playlists/7/trackpicks/new" %>
+    <%= f.hidden_field :artwork_url => "https://google.com" %>
+    <%= f.hidden_field :artist => "Fancy Friday" %>
+  </p>
+  <p>
+    <%= f.hidden_field :title, :value => "Up All Night" %>
+
+    <%= f.submit %>
+  </p>
+ 
+<% end %>
+
+
+
+

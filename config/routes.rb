@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
 
     resources :playlists do
-      resources :trackpicks, controller: 'playlists/trackpicks'
+      resources :trackpicks, controller: 'trackpicks'
     end
 
   # post 'trackpicks/' => 'trackpicks#create'
