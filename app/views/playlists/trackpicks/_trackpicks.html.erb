@@ -1,0 +1,15 @@
+<%= form_for :trackpicks do |f| %>
+  <p>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.hidden_field :value => 1 %>
+    <%= f.hidden_field :value => 1 %>
+    <%= f.hidden_field :value => 1 %>
+    <%= f.hidden_field :value => 1 %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  link_to "Profile", profile_path(@profile.id, param1: 'value1', param2: 'value2'), method: :post
+<% end %>
