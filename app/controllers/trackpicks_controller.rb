@@ -6,10 +6,6 @@ include TrackpicksHelper
 
 	end
 
-	def create
-
-	end
-
 	private
 	
 	def myCreate
@@ -22,4 +18,10 @@ include TrackpicksHelper
 
 		redirect_ to 'playlist/'
 	end
+
+  def create
+    @params = params[:name]
+    @tracks = client.get('/tracks',:q => "#{params[:name]}")
+  end
+
 end

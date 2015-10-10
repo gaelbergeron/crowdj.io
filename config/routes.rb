@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
 
 
 
@@ -14,8 +14,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  
 
+  # match 'trackpicks/soundcloud' => "trackpicks#soundcloud", via: :post
+
+
+    resources :tracks
 
     resources :playlists do
       resources :trackpicks, controller: 'trackpicks'

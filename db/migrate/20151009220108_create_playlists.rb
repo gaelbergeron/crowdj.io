@@ -3,7 +3,6 @@ class CreatePlaylists < ActiveRecord::Migration
     create_table :playlists do |t|
       t.string :name
       t.references :user
-
       t.timestamps null: false
     end
   end
