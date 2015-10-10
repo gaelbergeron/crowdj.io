@@ -1,6 +1,15 @@
+# A frequent practice is to place the standard CRUD actions in each controller in the following order: index, show, new, edit, create, update and destroy.
+
 class PlaylistsController < ApplicationController
+
+  def show
+  end
+
   def new
     @playlist = Playlist.new
+  end
+
+  def edit
   end
 
   def create
@@ -13,7 +22,12 @@ class PlaylistsController < ApplicationController
       render 'new'
     end
 
-    redirect_to new_playlist_path
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
   private
