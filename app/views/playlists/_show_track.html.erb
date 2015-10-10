@@ -1,0 +1,14 @@
+<div class='trackpick'>
+  <img src="<%= trackpick.track.artwork_url %>"></img>
+  <br>
+  <audio controls>
+    <source src=<%= trackpick.track.track_url %> type="audio/ogg">
+  </audio>
+  <p>
+    <%= trackpick.track.artist %>  -
+    <%= trackpick.track.title %>
+  </p>
+  <p>
+    Added on <%= trackpick.created_at.strftime("%F") %>
+  </p>
+</div>
