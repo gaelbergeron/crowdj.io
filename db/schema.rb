@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20151009220204) do
   create_table "trackpicks", force: :cascade do |t|
     t.integer  "playlist_id"
     t.integer  "track_id"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "contributor_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -61,6 +61,9 @@ ActiveRecord::Schema.define(version: 20151009220204) do
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "username"
+    t.string   "phone_number"
+    t.string   "picture_url"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
