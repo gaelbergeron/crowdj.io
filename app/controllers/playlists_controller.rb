@@ -4,5 +4,6 @@ class PlaylistsController < ApplicationController
 
   def create
     @playlist = Playlist.new(params[:article])
+    p @playlist
   end
 end
