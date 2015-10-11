@@ -5,6 +5,7 @@ include TrackpicksHelper
 	def index
 		@playlist = Playlist.where(id: params[:playlist_id])
 		p @playlist
+		@trackpick = Trackpick.new
 		p "@" * 88
 		p params["playlist_id"]
 	end
@@ -19,13 +20,16 @@ include TrackpicksHelper
   end
 
 	def search
-		p "I am in soudcloud create"
-	@playlist_id = params[:soundcloud]["playlist_id"]
-	@playlist = Playlist.find(@playlist_id)
-  @tracks = client.get('/tracks',:q => "#{params[:name]}")
 
-  
-  render 'new', locals: {tracks: @tracks}
+		p "I am in search action"
+		@playlist_id = params[:search]["playlist_id"]
+		@playlist = Playlist.find(@playlist_id)
+    @tracks = client.get('/tracks',:q => "#{params[:name]}")
+
+
+    render "/trackpicks/new"
+
+
 
 	end
 

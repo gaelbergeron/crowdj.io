@@ -23,16 +23,16 @@ Rails.application.routes.draw do
     resources :soundcloud
 
     resources :playlists do
-      resources :trackpicks do
-        member do
-          post 'search'
-        end
+      member do
+          get 'search'
+          post 'results'
       end
 
+      resources :trackpicks
     end
 
   # post 'trackpicks/' => 'trackpicks#create'
-  
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

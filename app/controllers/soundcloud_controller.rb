@@ -6,8 +6,9 @@ class SoundcloudController < ApplicationController
 		@playlist = Playlist.find(@playlist_id)
     @tracks = client.get('/tracks',:q => "#{params[:name]}")
 
-    
-    redirect_to new_playlist_trackpick_path(@playlist)
+
+    render "/trackpicks/new"
+    # new_playlist_trackpick_path(@playlist)
 
   end
 end
