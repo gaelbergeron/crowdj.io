@@ -27,6 +27,8 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'soundcloud'
 
+gem 'pusher'
+
 gem 'faye'
 gem 'thin', require: false
 gem 'sync'

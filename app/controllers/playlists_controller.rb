@@ -31,6 +31,14 @@ class PlaylistsController < ApplicationController
 
   end
 
+  def search
+  end
+
+  def results
+    @playlist = Playlist.find(params[:id])
+    @tracks = client.get('/tracks',:q => "#{params[:search][:name]}")
+  end
+
   def update
   end
 

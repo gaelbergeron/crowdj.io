@@ -3,10 +3,7 @@ class TrackpicksController < ApplicationController
 include TrackpicksHelper
 
 	def index
-		@playlist = Playlist.where(id: params[:playlist_id])
-		p @playlist
-		p "@" * 88
-		p params["playlist_id"]
+
 	end
 
 
@@ -15,22 +12,27 @@ include TrackpicksHelper
 	end
 
 	def create
+		p params
+		p params[:playlist_id]
+
+		############ PSEUDOCODE ######################
+		# check whether Track is in database
+		# if not create new track
+		# @track = Track.new(title: )
+		# if save else
+
+	  # create Trackpicks
+	  # @playlist.trackpicks.new(track_id: @track.id)
+	  # if save else
+
+	  ################################################
+
+		# TrackpicksHelper.add_update_track(params)
+
+
+		# redirect_to 'playlist/show'
+
 
   end
-
-	def soundcloud
-		p "I am in soudcloud create"
-		p params
-	@playlist_id = params[:soundcloud]["playlist_id"]
-	@playlist = Playlist.find(@playlist_id)
-  @tracks = client.get('/tracks',:q => "#{params[:name]}")
-
-  
-  render 'new', locals: {tracks: @tracks}
-
-	end
-
-
-
 
 end

@@ -1,6 +1,6 @@
 <h1>Enjoy <%= @playlist.name %></h1>
 
-<%= link_to 'Add a new track', 'trackpicks/soundcloud', method: "post", playlist: @playlist.id %>
+<%= link_to 'Add a new track', search_playlist_path(@playlist) %>
 
 <% @playlist.trackpicks.each do |trackpick| %>
   <%= render partial: 'show_track', locals: {trackpick: trackpick} %>
