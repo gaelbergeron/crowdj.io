@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   # match 'trackpicks/soundcloud' => "trackpicks#soundcloud", via: :post
 
 
-    resources :tracks
+    # resources :tracks
 
-    resources :soundcloud
+    # resources :soundcloud
 
     resources :playlists do
 
