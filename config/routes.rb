@@ -20,8 +20,15 @@ Rails.application.routes.draw do
 
     resources :tracks
 
+    resources :soundcloud
+
     resources :playlists do
-      resources :trackpicks, controller: 'trackpicks'
+      resources :trackpicks do
+        member do
+          post 'search'
+        end
+      end
+
     end
 
   # post 'trackpicks/' => 'trackpicks#create'

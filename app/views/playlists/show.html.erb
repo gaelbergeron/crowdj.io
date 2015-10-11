@@ -1,6 +1,6 @@
 <h1>Enjoy <%= @playlist.name %></h1>
 
-<%= link_to 'Add a new track', new_playlist_trackpick_path(@playlist) %>
+<%= link_to 'Add a new track', playlist_trackpicks_path(@playlist) %>
 
 <% @playlist.trackpicks.each do |trackpick| %>
   <%= render partial: 'show_track', locals: {trackpick: trackpick} %>

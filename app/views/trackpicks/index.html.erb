@@ -1,0 +1,12 @@
+<%= form_for :soundcloud, url: search_playlist_trackpick_path, method: "post" do |f| %>
+  <p>
+    <%= f.label :Search %>
+    <%= f.text_field :name %>
+
+    <%= f.hidden_field :playlist_id, :value => params["playlist_id"] %>
+
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
