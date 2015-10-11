@@ -32,7 +32,7 @@ $(document).ready(function(){
 		wavesurfer.play();
 	});
 
-	wavesurfer.load('https://api.soundcloud.com/tracks/227808271/stream?client_id=e463348f5dce90fed78b9bc77460209e');
+	// wavesurfer.load('https://api.soundcloud.com/tracks/227808271/stream?client_id=e463348f5dce90fed78b9bc77460209e');
 
 	$('#play-button').on('click', function(){
 		wavesurfer.play();
@@ -530,7 +530,6 @@ $(document).ready(function(){
 // // // Write the contents of a playlist into the playlist tab in the html.
 // // function renderTrackList(list){
 // // 	$('.track').remove();
-ù-
 // // 	var html = list.map(function (tr,index) {
 // // 		return returnTrackHTML(tr,index);
 // // 	}).join('');
