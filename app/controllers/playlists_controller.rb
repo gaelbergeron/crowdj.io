@@ -7,10 +7,19 @@ class PlaylistsController < ApplicationController
   # end
 
   def show
-    @playlist = Playlist.find(params[:id])
+    p "i am in playlist show"
+    # p params
+    # if params[:action]
+    #   p "i am in if"
+    #   @playlist = Playlist.where(name: params[:playlist_name])
+    # else
+
+      @playlist = Playlist.find(params[:id])
+    # end
   end
 
   def new
+    p "i am in playlist new"
     @playlist = Playlist.new
   end
 
