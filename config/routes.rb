@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :playlists do
       resources :trackpicks
     end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
