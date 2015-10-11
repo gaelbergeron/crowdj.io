@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :soundcloud
 
     resources :playlists do
+
       member do
           get 'search'
           post 'results'
