@@ -1,5 +1,12 @@
 class TrackpicksController < ApplicationController
 
+include TrackpicksHelper
+
+	def index
+
+	end
+
+
 	def new
 
 	end
@@ -7,4 +14,5 @@ class TrackpicksController < ApplicationController
   def create
 
   end
+
 end

@@ -4,8 +4,8 @@
   <title>Crowdj</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag Sync.adapter_javascript_url %>
   <%= csrf_meta_tags %>
+
 </head>
 
 <header>
@@ -28,5 +28,8 @@
   <% end %>
 
 <%= yield %>
+
+<!-- <script src="assets/javascripts/application.js"></script>
+ -->
 </body>
 </html>
