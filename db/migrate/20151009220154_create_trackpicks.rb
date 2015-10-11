@@ -4,6 +4,7 @@ class CreateTrackpicks < ActiveRecord::Migration
       t.references :playlist
       t.references :track
       t.references :user
+
       t.timestamps null: false
     end
   end
