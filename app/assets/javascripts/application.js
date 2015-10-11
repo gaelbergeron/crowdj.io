@@ -14,4 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require sync
+//= require src/wavesurfer
+//= require src/util
+//= require src/webaudio
+//= require src/mediaelement
+//= require src/drawer
+//= require src/drawer.canvas
+//= require plugin/wavesurfer.elan
+//= require plugin/wavesurfer.microphone
+//= require plugin/wavesurfer.minimap
+//= require plugin/wavesurfer.regions
+//= require plugin/wavesurfer.spectrogram
+//= require plugin/wavesurfer.timeline
 //= require_tree .

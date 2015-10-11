@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     new_playlist_path
   end
 
+
   protected
 
   def configure_permitted_parameters
