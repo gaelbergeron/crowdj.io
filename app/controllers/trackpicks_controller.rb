@@ -3,11 +3,7 @@ class TrackpicksController < ApplicationController
 include TrackpicksHelper
 
 	def index
-		@playlist = Playlist.where(id: params[:playlist_id])
-		p @playlist
-		@trackpick = Trackpick.new
-		p "@" * 88
-		p params["playlist_id"]
+
 	end
 
 
@@ -16,24 +12,27 @@ include TrackpicksHelper
 	end
 
 	def create
+		p params
+		p params[:playlist_id]
+
+		############ PSEUDOCODE ######################
+		# check whether Track is in database
+		# if not create new track
+		# @track = Track.new(title: )
+		# if save else
+
+	  # create Trackpicks
+	  # @playlist.trackpicks.new(track_id: @track.id)
+	  # if save else
+
+	  ################################################
+
+		# TrackpicksHelper.add_update_track(params)
+
+
+		# redirect_to 'playlist/show'
+
 
   end
-
-	def search
-
-		p "I am in search action"
-		@playlist_id = params[:search]["playlist_id"]
-		@playlist = Playlist.find(@playlist_id)
-    @tracks = client.get('/tracks',:q => "#{params[:name]}")
-
-
-    render "/trackpicks/new"
-
-
-
-	end
-
-
-
 
 end

@@ -29,18 +29,11 @@ class PlaylistsController < ApplicationController
   end
 
   def search
-
   end
 
   def results
-
-    p "I am in playlist search action"
     @playlist = Playlist.find(params[:id])
-    @tracks = client.get('/tracks',:q => "#{params[:name]}")
-
-
-    render "/trackpicks/new"
-
+    @tracks = client.get('/tracks',:q => "#{params[:search][:name]}")
   end
 
   def update
