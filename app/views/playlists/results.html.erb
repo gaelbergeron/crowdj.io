@@ -1,6 +1,5 @@
 <%@tracks.each do |track|%>
   <div id="searched-tracks">
-    <p><%= track.artist%></p>
     <p><%= track.title%></p>
     <div id="art">
      <img src="<%=track.artwork_url%>"></img>
@@ -10,7 +9,6 @@
           <%= f.hidden_field :title, :value => track.title %>
           <%= f.hidden_field :track_url, :value => track.stream_url %>
           <%= f.hidden_field :artwork_url, :value => track.artwork_url %>
-          <%= f.hidden_field :artist, :value => track.artist %>
           <%= f.submit %>
         <% end %>
       </div>

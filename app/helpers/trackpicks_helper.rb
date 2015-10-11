@@ -5,7 +5,7 @@ module TrackpicksHelper
 	end
 
 	def self.update_track(params)
-		@track.update(artist: params[:trackpick][:artist], artwork_url: params[:trackpick][:artwork_url], title: params[:trackpick][:title])
+		@track.update(artwork_url: params[:trackpick][:artwork_url], title: params[:trackpick][:title])
 	end
 
 	def self.find_init_trackpick(params)
