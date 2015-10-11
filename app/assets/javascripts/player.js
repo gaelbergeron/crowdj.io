@@ -39,107 +39,91 @@ $(document).ready(function(){
 		wavesurfer.stop();
 	});
 
-
-// Read file and play it.
-// Takes one parameter - the index of the track we want to play.
-function playTrack(number){
-
-	if(playlist[number] && playlist[i]) {
-		lastPlayed.push(number);
-		var file = playlist[i].audioTrack,
-			result = {};
-	// Load function capturing URL, need to adjust to work with Crowdj
-		readFile(file, function(result){
-			result = file;
-			wavesurfer.loadBlob(result);
-		});
-	}
-	// If something went wrong stop playback.
-	else{
-		wavesurfer.stop();
-	}
-}
-
-// An event handler for when a track is loaded and ready to play.
-wavesurfer.on('ready', function () {
-	// Play the track.
-	wavesurfer.play();
-
-	var duration = wavesurfer.getDuration();
-
-
-	// Show duration of track.
-	$('#current').text('0:00');
-	$('#total').text(formatTime(duration));
-
-	// Show the progress of the track in time.
-	clearInterval(timer);
-	timer = setInterval(function() {
-		$('#current').text(formatTime(wavesurfer.getCurrentTime()));
-	}, 1000);
-
-	// In the playlist array mark the track as currently playing
-	allTracks.forEach(function (tr) {
-		tr.playing = false;
-	});
-	playlist[i].playing = true;
-
-});
-
-});
-
-
-// Event handler when a track finishes playing
-wavesurfer.on('finish', function () {
-	if (i >= playlist.length - 1) {
-		wavesurfer.stop();
-	}
-	else {
+	$('#next-button').on('click', function () {
 		i++;
+		if (i > playlist.length - 1) {
+			i = 0;
+		}
+
+		if(playlist[i]) {
+			playTrack(i);
+		}
+	});
+
+	$('#previous-button').on('click', function () {
+		if(i==0){
+			i=playlist.length-1;
+		}
+		else{
+			i--;
+		}
+		if(i==undefined || i<0){
+			i = 0;
+		}
 		playTrack(i);
+	});
+
+	// Read file and play it.
+	// Takes one parameter - the index of the track we want to play.
+	function playTrack(number){
+
+		if(playlist[number] && playlist[i]) {
+			lastPlayed.push(number);
+			var file = playlist[i].audioTrack,
+				result = {};
+		// Load function capturing URL, need to adjust to work with Crowdj
+			readFile(file, function(result){
+				result = file;
+				wavesurfer.loadBlob(result);
+			});
+		}
+		// If something went wrong stop playback.
+		else{
+			wavesurfer.stop();
+		}
 	}
+
+	// An event handler for when a track is loaded and ready to play.
+	wavesurfer.on('ready', function () {
+		// Play the track.
+		wavesurfer.play();
+
+		var duration = wavesurfer.getDuration();
+
+		// Show duration of track.
+		$('#current').text('0:00');
+		$('#total').text(formatTime(duration));
+
+		// Show the progress of the track in time.
+		clearInterval(timer);
+		timer = setInterval(function() {
+			$('#current').text(formatTime(wavesurfer.getCurrentTime()));
+		}, 1000);
+
+		// In the playlist array mark the track as currently playing
+		allTracks.forEach(function (tr) {
+			tr.playing = false;
+		});
+		playlist[i].playing = true;
+
+	});
+
+	// Event handler when a track finishes playing
+	wavesurfer.on('finish', function () {
+		if (i >= playlist.length - 1) {
+			wavesurfer.stop();
+		}
+		else {
+			i++;
+			playTrack(i);
+		}
+	});
+
+	wavesurfer.on('seek', function () {
+		$('#current').text(formatTime(wavesurfer.getCurrentTime()));
+	});
+
 });
-
-wavesurfer.on('seek', function () {
-	$('#current').text(formatTime(wavesurfer.getCurrentTime()));
-});
-
-
-// /*---------------------
-// 	Player controls
-// ----------------------*/
-
-// Pressing the 'next' button
-// Plays next track in playlist
-$('#next-button').on('click', function () {
-	i++;
-	if (i > playlist.length - 1) {
-		i = 0;
-	}
-
-	if(playlist[i]) {
-		playTrack(i);
-	}
-});
-
-// Pressing the 'previous' button.
-// If shuffle is off plays previous song from playlist
-$('#previous-button').on('click', function () {
-	if(i==0){
-		i=playlist.length-1;
-	}
-	else{
-		i--;
-	}
-	if(i==undefined || i<0){
-		i = 0;
-	}
-	playTrack(i);
-});
-
-
-
-
 
 // /*----------------------
 // 	Playlist navigation
@@ -399,10 +383,10 @@ function formatTime(time){
 }
 
 
-// // Wavesurfer responsiveness
-// $(window).on('resize', function(){
-// 	if($('#wave').is(":visible")) {
-// 		wavesurfer.drawer.containerWidth = wavesurfer.drawer.container.clientWidth;
-// 		wavesurfer.drawBuffer();
-// 	}
-// });
+// Wavesurfer responsiveness
+$(window).on('resize', function(){
+	if($('#wave').is(":visible")) {
+		wavesurfer.drawer.containerWidth = wavesurfer.drawer.container.clientWidth;
+		wavesurfer.drawBuffer();
+	}
+});
