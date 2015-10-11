@@ -18,8 +18,6 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    p params
-    p playlist_params
     @playlist = Playlist.new(playlist_params)
 
     if @playlist.save
@@ -28,6 +26,14 @@ class PlaylistsController < ApplicationController
       render 'new'
     end
 
+  end
+
+  def search
+  end
+
+  def results
+    @playlist = Playlist.find(params[:id])
+    @tracks = client.get('/tracks',:q => "#{params[:search][:name]}")
   end
 
   def update

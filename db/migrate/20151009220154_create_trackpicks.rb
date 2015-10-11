@@ -3,7 +3,7 @@ class CreateTrackpicks < ActiveRecord::Migration
     create_table :trackpicks do |t|
       t.references :playlist
       t.references :track
-      t.references :contributor
+      t.references :user
 
       t.timestamps null: false
     end

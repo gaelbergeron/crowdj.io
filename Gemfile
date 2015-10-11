@@ -24,6 +24,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 
+gem 'dotenv-rails'
+gem 'soundcloud'
+
+gem 'pusher'
+
 gem 'faye'
 gem 'thin', require: false
 gem 'sync'
