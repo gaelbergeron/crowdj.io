@@ -7,19 +7,10 @@ class PlaylistsController < ApplicationController
   # end
 
   def show
-    p "i am in playlist show"
-    # p params
-    # if params[:action]
-    #   p "i am in if"
-    #   @playlist = Playlist.where(name: params[:playlist_name])
-    # else
-
-      @playlist = Playlist.find(params[:id])
-    # end
+    @playlist = Playlist.find(params[:id])
   end
 
   def new
-    p "i am in playlist new"
     @playlist = Playlist.new
   end
 
@@ -27,15 +18,12 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    p "i am in playlist controller"
-    p params[:playlist][:user_id]
-    @playlist = Playlist.create(name: params[:playlist][:name], user_id: params[:playlist][:user_id])
-    p @playlist
-    p "just before if"
+    @playlist = Playlist.new(playlist_params)
+
     if @playlist.save
       redirect_to @playlist
     else
-      render 'show', locals: {playlist: @playlist}
+      render 'new'
     end
 
   end
