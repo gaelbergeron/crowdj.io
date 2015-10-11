@@ -8,31 +8,16 @@ include TrackpicksHelper
 
 
 	def new
+		p params[:playlist_name]
+		@playlist = Playlist.where(name: params[:playlist_name])
 
+		render '/playlists/show', object: @playlist 
 	end
 
 	def create
-		p params
-		p params[:playlist_id]
+		TrackpicksHelper.add_update_track(params)
 
-		############ PSEUDOCODE ######################
-		# check whether Track is in database
-		# if not create new track
-		# @track = Track.new(title: )
-		# if save else
-
-	  # create Trackpicks
-	  # @playlist.trackpicks.new(track_id: @track.id)
-	  # if save else
-
-	  ################################################
-
-		# TrackpicksHelper.add_update_track(params)
-
-
-		# redirect_to 'playlist/show'
-
-
+		redirect_to :controller => 'trackpicks', :action => 'new', :playlist_name => "#{params[:playlist_name]}"
   end
 
 end
