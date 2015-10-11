@@ -18,8 +18,9 @@ include TrackpicksHelper
 
   end
 
-	def search
+	def soundcloud
 		p "I am in soudcloud create"
+		p params
 	@playlist_id = params[:soundcloud]["playlist_id"]
 	@playlist = Playlist.find(@playlist_id)
   @tracks = client.get('/tracks',:q => "#{params[:name]}")

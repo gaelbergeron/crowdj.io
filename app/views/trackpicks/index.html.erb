@@ -1,4 +1,4 @@
-<%= form_for :soundcloud, url: search_playlist_trackpick_path, method: "post" do |f| %>
+<%= form_for :soundcloud, url: 'trackpicks/soundcloud', method: "post" do |f| %>
   <p>
     <%= f.label :Search %>
     <%= f.text_field :name %>

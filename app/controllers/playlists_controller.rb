@@ -18,12 +18,15 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = Playlist.new(playlist_params)
-
+    p "i am in playlist controller"
+    p params[:playlist][:user_id]
+    @playlist = Playlist.create(name: params[:playlist][:name], user_id: params[:playlist][:user_id])
+    p @playlist
+    p "just before if"
     if @playlist.save
       redirect_to @playlist
     else
-      render 'new'
+      render 'show', locals: {playlist: @playlist}
     end
 
   end

@@ -1,6 +1,6 @@
 <h1>Create a new playlist</h1>
 
-<%= form_for :playlist, url: playlists_path do |f| %>
+<%= form_for :playlist, url: playlists_path, method: "post" do |f| %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
