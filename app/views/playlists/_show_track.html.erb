@@ -2,16 +2,13 @@
   <img src="<%= trackpick.track.artwork_url %>"></img>
   <br>
 
-  <div class="soundcloud-url" id="<%= trackpick.track.track_url + '?client_id=' + ENV['CLIENT_ID'] %>"></div>
-  <!-- <div class="title"> -->
-    <p>
-    <%= trackpick.track.title %>
+  <div class="soundcloud-url" id="<%= trackpick.track.track_url + '?client_id=' + ENV['CLIENT_ID'] %>">
+    <!-- <p> -->
+    <div class="title"><%= trackpick.track.title %></div>
        <a href="" class="up"><i class="fa fa-hand-o-up"></i></a>
        <p id="vote-count<%=trackpick.id%>"><%=trackpick.votecount%></p>
        <a href="" class="down"><i class="fa fa-hand-o-down"></i></a>
-    </p>
-    <p>
-      Added on <%= trackpick.created_at.strftime("%F") %>
-    </p>
-  <!-- </div> -->
+    <!-- </p> -->
+    <p>Added on <%= trackpick.created_at.strftime("%F") %></p>
+  </div>
 </div>

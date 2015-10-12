@@ -4,6 +4,8 @@ var allTracks = [],
 		timer = 0;
 
 $(document).ready(function(){
+
+	$('#play-button').on('click', function(){
 	var wavesurfer = Object.create(WaveSurfer);
 
 	wavesurfer.init({
@@ -18,7 +20,23 @@ $(document).ready(function(){
 	$('.soundcloud-url').each(function(){
 		playlist.push($(this).attr('id'));
 	});
-	console.log(playlist);
+
+
+	var observer = new MutationObserver(function( mutations ) {
+	  mutations.forEach(function( mutation ) {
+	    var newNodes = mutation.addedNodes; // DOM NodeList
+	    if( newNodes !== null ) { // If there are new nodes added
+	    	var $nodes = $( newNodes ); // jQuery set
+	    	$nodes.each(function() {
+	    		var $node = $( this );
+	    		// if( $node.hasClass( "message" ) ) {
+	    		// 	// do something
+	    		// }
+	    		debugger
+	    	});
+	    }
+	  });    
+	});
 
 	wavesurfer.load(playlist[0]);
 
@@ -88,15 +106,25 @@ $(document).ready(function(){
 			wavesurfer.stop();
 		}
 		else {
+			completedTrack = playlist[i];
 			i++;
 			playTrack(i);
-			completedTrack = playlist[i]
 		}
-		regExp = '/.*/(.*)/'
-		testRegexp = completedTrack.match(regExp)
-		songToUpdate = $('[id*='+testRegexp[1]+'] .title p')
-		console.log(songToUpdate);
-		// console.log(testRegexp);
+		regExpId = '/.*/(.*)/'
+		trackId = completedTrack.match(regExpId)
+		trackToUpdate = $('[id*='+trackId[1]+'] .title')
+		titleTrackToUpdate = trackToUpdate.text()
+
+		var playlist_id = $('#current_playlist').children().attr('id')
+		var trackpick_id = trackToUpdate.parent().parent().attr('id')
+
+		$.ajax({
+			url: '/playlists/'+playlist_id+'/trackpicks/'+trackpick_id,
+			type: 'put'
+		})
+		.done(function(response){
+			trackToUpdate.parent().parent().remove()
+		});
 
 	});
 
@@ -117,6 +145,7 @@ $(document).ready(function(){
 			wavesurfer.drawer.containerWidth = wavesurfer.drawer.container.clientWidth;
 			wavesurfer.drawBuffer();
 		}
+	});
 	});
 });
 

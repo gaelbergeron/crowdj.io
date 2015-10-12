@@ -24,8 +24,13 @@ include TrackpicksHelper
     else
       redirect_to search_playlist_url(@playlist)
     end
+  end
 
-
+  def update
+    p params
+    @trackpick = Trackpick.find(params[:id])
+    @trackpick.update(status: "Played")
+    render json: {status: "Trackpick status updated"}
   end
 
 end
