@@ -35,7 +35,7 @@ $(document).ready(function(){
 	    		debugger
 	    	});
 	    }
-	  });    
+	  });
 	});
 
 	wavesurfer.load(playlist[0]);
@@ -112,18 +112,18 @@ $(document).ready(function(){
 		}
 		regExpId = '/.*/(.*)/'
 		trackId = completedTrack.match(regExpId)
-		trackToUpdate = $('[id*='+trackId[1]+'] .title')
-		titleTrackToUpdate = trackToUpdate.text()
+		trackToUpdate = $('[id*='+trackId[1]+']')
 
 		var playlist_id = $('#current_playlist').children().attr('id')
-		var trackpick_id = trackToUpdate.parent().parent().attr('id')
+		var trackpick_id = trackToUpdate.parent().attr('id')
+
 
 		$.ajax({
 			url: '/playlists/'+playlist_id+'/trackpicks/'+trackpick_id,
 			type: 'put'
 		})
 		.done(function(response){
-			trackToUpdate.parent().parent().remove()
+			trackToUpdate.parent().remove()
 		});
 
 	});
@@ -147,7 +147,6 @@ $(document).ready(function(){
 		}
 	});
 	});
-});
 	});
 
 
