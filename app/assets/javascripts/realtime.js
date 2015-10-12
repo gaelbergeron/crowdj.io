@@ -6,6 +6,6 @@ $(document).on("crowdj:playlists_show", function(){
       $("#current_playlist").append(data)
     });
   channel.bind('vote', function(data) {
-    $("#current_playlist").html(data)
+    $("#current_playlist").replaceWith(data)
   });
 });

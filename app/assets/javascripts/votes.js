@@ -14,11 +14,13 @@ var upVote = function(e){
   $.ajax({
     method:'POST',
     url:'/votes',
+    dataType: 'json',
     data: {trackpick: trackpickId, value: 1}
   })
 
   .done(function(response){
-    $('#current_playlist').replaceWith(response);
+    console.log(response)
+    $('#current_playlist').replaceWith(response.partial);
   })
 
 };
@@ -30,11 +32,12 @@ var downVote = function(e){
   $.ajax({
     method:'POST',
     url:'/votes',
+    dataType: 'json',
     data: {trackpick: trackpickId, value: -1}
   })
 
   .done(function(response){
-    $('#current_playlist').replaceWith(response);
+    $('#current_playlist').replaceWith(response.partial);
   })
 
 };
