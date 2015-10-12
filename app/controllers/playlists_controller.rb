@@ -8,6 +8,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find(params[:id])
+    @trackpicks = @playlist.trackpicks.sort {|a,b| b.votecount <=> a.votecount}
   end
 
   def new
