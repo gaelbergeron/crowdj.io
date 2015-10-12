@@ -3,9 +3,9 @@
 <%= link_to 'Add a new track', search_playlist_path(@playlist) %>
 
 <div id='current_playlist'>
-<% @playlist.trackpicks.each do |trackpick| %>
-    <%= render partial: 'show_track', locals: {trackpick: trackpick} %>
-<% end %>
+  <% @trackpicks.each do |trackpick| %>
+      <%= render partial: 'show_track', locals: {trackpick: trackpick} %>
+  <% end %>
 </div>
 
 <% if @playlist.user_id == current_user.id %>
