@@ -8,6 +8,7 @@
 <% end %>
 </div>
 
+<% if @playlist.user_id == current_user.id %>
 <div id="container" >
 
   <div id="wave"></div>
@@ -27,5 +28,6 @@
       <span id="current">-</span> / <span id="total">-</span>
     </p>
   </div>
+<% end %>
 
 </div>
