@@ -15,7 +15,7 @@ $(document).ready(function(){
 		progressColor: '#39b238'
 	});
 
-	$('.soundcloud-url').each(function(){
+	$('.trackpick').each(function(){
 		playlist.push($(this).attr('id'));
 	});
 	console.log(playlist);
