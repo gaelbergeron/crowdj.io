@@ -90,7 +90,14 @@ $(document).ready(function(){
 		else {
 			i++;
 			playTrack(i);
+			completedTrack = playlist[i]
 		}
+		regExp = '/.*/(.*)/'
+		testRegexp = completedTrack.match(regExp)
+		songToUpdate = $('[id*='+testRegexp[1]+'] .title p')
+		console.log(songToUpdate);
+		// console.log(testRegexp);
+
 	});
 
 	wavesurfer.on('seek', function () {

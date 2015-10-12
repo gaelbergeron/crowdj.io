@@ -10,8 +10,9 @@ $(document).ready(function(){
 
 var upVote = function(e){
   e.preventDefault();
+  // debugger
   var trackpickId = $(this).closest('div').attr('id')
-
+  console.log($(this).closest('div'));
   $.ajax({
     method:'POST',
     url:'/votes',

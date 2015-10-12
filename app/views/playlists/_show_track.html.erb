@@ -3,14 +3,15 @@
   <br>
 
   <div class="soundcloud-url" id="<%= trackpick.track.track_url + '?client_id=' + ENV['CLIENT_ID'] %>"></div>
-
-  <p>
+  <!-- <div class="title"> -->
+    <p>
     <%= trackpick.track.title %>
-     <a href="" class="up"><i class="fa fa-hand-o-up"></i></a>
-     <p id="vote-count<%=trackpick.id%>"><%=trackpick.votecount%></p>
-     <a href="" class="down"><i class="fa fa-hand-o-down"></i>
-  </p>
-  <p>
-    Added on <%= trackpick.created_at.strftime("%F") %>
-  </p>
+       <a href="" class="up"><i class="fa fa-hand-o-up"></i></a>
+       <p id="vote-count<%=trackpick.id%>"><%=trackpick.votecount%></p>
+       <a href="" class="down"><i class="fa fa-hand-o-down"></i></a>
+    </p>
+    <p>
+      Added on <%= trackpick.created_at.strftime("%F") %>
+    </p>
+  <!-- </div> -->
 </div>
