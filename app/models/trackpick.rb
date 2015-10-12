@@ -6,4 +6,9 @@ class Trackpick < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :playlist
+
+
+  def votecount
+    self.votes.sum(:value)
+  end
 end
