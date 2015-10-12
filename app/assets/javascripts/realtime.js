@@ -10,4 +10,7 @@ $(document).on("crowdj:playlists_show", function(){
   channel.bind('vote', function(data) {
     $(".current_playlist#"+playlistId).replaceWith(data)
   });
+  channel.bind('remove', function(data) {
+    $(".current_playlist#"+playlistId).replaceWith(data)
+  });
 });

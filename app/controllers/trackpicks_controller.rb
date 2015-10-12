@@ -28,7 +28,16 @@ include TrackpicksHelper
   def update
     @trackpick = Trackpick.find(params[:id])
     @trackpick.update(status: "Played")
+
+    @playlist = Playlist.where(:id => params[:playlist_id]).first
+
+    @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort {|a,b| b.votecount <=> a.votecount}
+
+    Pusher.trigger("playlist#{@playlist.id}", 'remove', render_to_string('/playlists/_show_trackpicks', :layout => false))
+
+
     render json: {status: "Trackpick status updated"}
+
   end
 
 end
