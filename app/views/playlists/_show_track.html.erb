@@ -1,9 +1,9 @@
 <div class='trackpick'>
   <img src="<%= trackpick.track.artwork_url %>"></img>
   <br>
-  <audio controls>
-    <source src=<%= trackpick.track.track_url + "?client_id=" + ENV["CLIENT_ID"] %> type="audio/ogg">
-  </audio>
+
+  <div class="soundcloud-url" id="<%= trackpick.track.track_url + '?client_id=' + ENV['CLIENT_ID'] %>"></div>
+ 
   <p>
     <%= trackpick.track.title %>
   </p>
