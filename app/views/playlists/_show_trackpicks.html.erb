@@ -1,5 +1,5 @@
 <div id='current_playlist'>
-  <div id='<%= @playlist.id %>'>
+  <div class="current_playlist" id='<%= @playlist.id %>'>
     <% @trackpicks.each do |trackpick| %>
       <%= render partial: '/playlists/show_track', locals: {trackpick: trackpick} %>
     <% end %>
