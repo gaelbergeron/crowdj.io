@@ -1,13 +1,10 @@
-<div class='trackpick'>
+<div class='trackpick' id="<%= trackpick.track.track_url + '?client_id=' + ENV['CLIENT_ID'] %>">
   <img src="<%= trackpick.track.artwork_url %>"></img>
   <br>
 
   <div class="soundcloud-url" id="<%= trackpick.track.track_url + '?client_id=' + ENV['CLIENT_ID'] %>"></div>
- 
-  <p>
-    <%= trackpick.track.title %>
-  </p>
-  <p>
-    Added on <%= trackpick.created_at.strftime("%F") %>
-  </p>
+  <div class="title">
+    <p><%= trackpick.track.title %></p>
+  </div>
+    <p>Added on <%= trackpick.created_at.strftime("%F") %></p>
 </div>
