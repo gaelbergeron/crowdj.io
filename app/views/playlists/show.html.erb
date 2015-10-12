@@ -3,14 +3,15 @@
 <%= link_to 'Add a new track', search_playlist_path(@playlist) %>
 
 <div id='current_playlist'>
-  <% @trackpicks.each do |trackpick| %>
-      <%= render partial: 'show_track', locals: {trackpick: trackpick} %>
-  <% end %>
+  <div id='<%= @playlist.id %>'>
+    <% @trackpicks.each do |trackpick| %>
+        <%= render partial: 'show_track', locals: {trackpick: trackpick} %>
+    <% end %>
+  </div>
 </div>
 
 <% if @playlist.user_id == current_user.id %>
 <div id="container" >
-
   <div id="wave"></div>
 
   <div id="control-bar">
