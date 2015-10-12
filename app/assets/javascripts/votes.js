@@ -19,7 +19,6 @@ var upVote = function(e){
   })
 
   .done(function(response){
-    console.log(response)
     $('#current_playlist').replaceWith(response.partial);
   })
 
