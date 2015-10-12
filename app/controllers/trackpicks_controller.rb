@@ -15,7 +15,6 @@ include TrackpicksHelper
     if TrackpicksHelper.update_track(params)
       @trackpick = TrackpicksHelper.find_init_trackpick(params)
         if TrackpicksHelper.update_trackpick(params, current_user.id)
-          p @trackpick
           Pusher.trigger("playlist_channel", 'add_trackpick', render_to_string('/playlists/_show_track', :locals => {trackpick: @trackpick}, :layout => false))
           redirect_to playlist_path(@playlist)
         else

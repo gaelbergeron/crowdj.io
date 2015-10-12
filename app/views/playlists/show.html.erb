@@ -4,14 +4,14 @@
 
 <div id='current_playlist'>
   <div id='<%= @playlist.id %>'>
-    <% @playlist.trackpicks.each do |trackpick| %>
+    <% @trackpicks.each do |trackpick| %>
         <%= render partial: 'show_track', locals: {trackpick: trackpick} %>
     <% end %>
   </div>
 </div>
 
+<% if @playlist.user_id == current_user.id %>
 <div id="container" >
-
   <div id="wave"></div>
 
   <div id="control-bar">
@@ -31,3 +31,4 @@
   </div>
 
 </div>
+<% end %>
