@@ -4,6 +4,8 @@ var allTracks = [],
 		timer = 0;
 
 $(document).ready(function(){
+	$('#play-button').on('click', function(){
+
 	var wavesurfer = Object.create(WaveSurfer);
 
 	wavesurfer.init({
@@ -119,4 +121,6 @@ $(document).ready(function(){
 		}
 	});
 });
+	});
+
 
