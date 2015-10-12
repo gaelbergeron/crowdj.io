@@ -5,4 +5,7 @@ $(document).on("crowdj:playlists_show", function(){
   channel.bind('add_trackpick', function(data) {
       $("#current_playlist").append(data)
     });
+  channel.bind('vote', function(data) {
+    $("#current_playlist").html(data)
+  });
 });
