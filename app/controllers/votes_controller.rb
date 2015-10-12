@@ -6,9 +6,11 @@ class VotesController < ApplicationController
 
 
      if request.xhr?
+
       @vote = Vote.create(:trackpick_id => params[:trackpick],:user_id => current_user.id, value: params[:value])
 
       render json: {:votes => @trackpick.votecount}
+
       end
 
   end
