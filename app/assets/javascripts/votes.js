@@ -11,8 +11,7 @@ $(document).ready(function(){
 var upVote = function(e){
   e.preventDefault();
   // debugger
-  var trackpickId = $(this).closest('div').attr('id')
-  console.log($(this).closest('div'));
+  var trackpickId = $('div.trackpick').attr('id')
   $.ajax({
     method:'POST',
     url:'/votes',
@@ -27,7 +26,7 @@ var upVote = function(e){
 
 var downVote = function(e){
   e.preventDefault();
-  var trackpickId = $(this).closest('div').attr('id')
+  var trackpickId = $('div.trackpick').attr('id')
 
   $.ajax({
     method:'POST',
