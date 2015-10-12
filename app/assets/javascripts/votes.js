@@ -4,6 +4,7 @@ $(document).ready(function(){
 
   $('#current_playlist').on('click','a.up',upVote);
   $('#current_playlist').on('click','a.down',downVote);
+
 });
 
 
@@ -22,8 +23,6 @@ var upVote = function(e){
   })
 
 };
-
-
 
 var downVote = function(e){
   e.preventDefault();
