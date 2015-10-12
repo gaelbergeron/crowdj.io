@@ -1,0 +1,22 @@
+<%= form_for @dragonfly_image, html: { multipart: true } do |f| %>
+  <% if @dragonfly_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dragonfly_image.errors.count, "error") %> prohibited this dragonfly_image from being saved:</h2>
+
+      <ul>
+      <% @dragonfly_image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :asset %>
+    <%= f.file_field :asset, html: { class: 'form-control' } %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>

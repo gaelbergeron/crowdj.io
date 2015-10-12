@@ -9,11 +9,14 @@
 </head>
 
 <header>
-  <%if current_user%>
-    <a href='/logout'>Logout</a>
+  <%if user_signed_in? %>
+    Logged in as <strong> <%= current_user.email%></strong><%= %> | 
+    <a href='/logout'>Logout</a> | 
+    <%= link_to "Profile", edit_user_registration_path %> |
 
   <%else%>
-    <%= link_to "Log in", login_path %>
+    <%= link_to "Login", login_path %> |
+    <%= link_to "Sign up", new_user_registration_path %>
   <%end%>
 </header>
 <body>
