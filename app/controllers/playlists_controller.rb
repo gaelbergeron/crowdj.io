@@ -37,10 +37,6 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
     @tracks = client.get('/tracks',:q => "#{params[:search][:name]}")
 
-   @tracks.each do |track|
-    p track.streamable
-   end
-
   end
 
   def update
