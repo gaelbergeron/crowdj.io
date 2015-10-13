@@ -5,6 +5,8 @@ class DragonflyImagesController < ApplicationController
   # GET /dragonfly_images.json
   def index
     @dragonfly_images = DragonflyImage.where(user_id: current_user.id)
+    p "dragonfly_images content below"
+    p @dragonfly_images
   end
 
   # GET /dragonfly_images/1
