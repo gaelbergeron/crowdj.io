@@ -20,11 +20,13 @@ class PlaylistsController < ApplicationController
   end
 
   def create
+
     @playlist = Playlist.new(playlist_params)
 
     if @playlist.save
       redirect_to @playlist
     else
+     @playlist_errors = @playlist.errors.full_messages[0]
       render 'new'
     end
 
