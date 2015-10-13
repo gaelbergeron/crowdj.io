@@ -106,9 +106,9 @@ $(document).ready(function(){
 		playingSongDiv.children('a').hide()
 		playingSongDiv.appendTo('#active-song')
 		playingSongId = playingSongDiv.attr('id')
-		setTimeout(function(){
-			$(".current_playlist").children(".trackpick#"+playingSongId).remove()
-		}, 100)
+		// setTimeout(function(){
+		// 	$(".current_playlist").children(".trackpick#"+playingSongId).remove()
+		// }, 100)
 	}
 
 	// An event handler for when a track is loaded and ready to play.
