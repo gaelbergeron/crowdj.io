@@ -39,7 +39,7 @@ class PlaylistsController < ApplicationController
 
     @tracks = []
     @soundcloud_tracks.each do |track|
-      if track.streamable
+      if track.streamable && track.artwork_url
         @tracks << track
       end
     end
