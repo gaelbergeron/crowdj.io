@@ -22,13 +22,14 @@ $(document).ready(function(){
 
 	$('#play-button').on('click', function(){
         wavesurfer.load(playlist[0]);
+        $('#active-song').empty();
         $('#play-button').hide();
         regExpId = '/.*/(.*)/'
 				trackId = playlist[0].match(regExpId)
 				trackToUpdate = $('[id*='+trackId[1]+']')
 				playingSongDiv = trackToUpdate.parent()
 				playingSongDiv.children('a').hide()
-				playingSongDiv.appendTo('#playing-song')
+				playingSongDiv.appendTo('#active-song')
     });
 
 	var target = $('#current_playlist')[0];
@@ -91,14 +92,14 @@ $(document).ready(function(){
 	});
 
 	function playTrack(number){
-			wavesurfer.load(playlist[number]);
-			console.log(playlist[number])
-			// regExpId = '/.*/(.*)/'
-			// trackId = completedTrack.match(regExpId)
-			// trackToUpdate = $('[id*='+trackId[1]+']')
-
-			// var playlist_id = $('#current_playlist').children().attr('id')
-			// var trackpick_id = trackToUpdate.parent().attr('id')
+		wavesurfer.load(playlist[number]);
+		$('#active-song').empty();
+		regExpId = '/.*/(.*)/'
+		trackId = playlist[number].match(regExpId)
+		trackToUpdate = $('[id*='+trackId[1]+']')
+		playingSongDiv = trackToUpdate.parent()
+		playingSongDiv.children('a').hide()
+		playingSongDiv.appendTo('#active-song')
 	}
 
 	// An event handler for when a track is loaded and ready to play.
@@ -114,37 +115,24 @@ $(document).ready(function(){
 		timer = setInterval(function() {
 			$('#current').text(formatTime(wavesurfer.getCurrentTime()));
 		}, 1000);
-		// In the playlist array mark the track as currently playing
-		allTracks.forEach(function (tr) {
-			tr.playing = false;
-		});
-		playlist[i].playing = true;
-
 	});
 
 	// Event handler when a track finishes playing
 	wavesurfer.on('finish', function () {
-		if (i >= playlist.length - 1) {
-			wavesurfer.stop();
-		}
-		else {
-			completedTrack = playlist[i];
-			i++;
-			playTrack(i);
-			playlist.splice(i-1, 1);
-		}
-		regExpId = '/.*/(.*)/'
-		trackId = completedTrack.match(regExpId)
-		trackToUpdate = $('[id*='+trackId[1]+']')
+		// regExpId = '/.*/(.*)/'
+		// trackId = completedTrack.match(regExpId)
+		// trackToUpdate = $('[id*='+trackId[1]+']')
 
 		var playlist_id = $('#current_playlist').children().attr('id')
-		var trackpick_id = trackToUpdate.parent().attr('id')
+		var trackpick_id = $('#active-song').children().attr('id')
+
 		$.ajax({
 			url: '/playlists/'+playlist_id+'/trackpicks/'+trackpick_id,
 			type: 'put'
 		})
 		.done(function(response){
-			trackToUpdate.parent().remove()
+			$('#active-song').empty()
+			// trackToUpdate.parent().remove()
 		});
 
 		playlist = [];
@@ -152,6 +140,16 @@ $(document).ready(function(){
 		$('.soundcloud-url').each(function(){
 			playlist.push($(this).attr('id'));
 		});
+
+		if (i >= playlist.length - 1) {
+			wavesurfer.stop();
+		}
+		else {
+			completedTrack = playlist[i];
+			i++;
+			playTrack(i);
+			// playlist.splice(i-1, 1);
+		}
 
 	});
 
