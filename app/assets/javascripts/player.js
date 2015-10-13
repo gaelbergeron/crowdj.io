@@ -39,7 +39,9 @@ $(document).ready(function(){
 	    	var $nodes = $( newNodes );
 	    	$nodes.each(function() {
 	    		var $node = $(this).children().eq(2).attr('id')
+	    		console.log(playlist)
 	    		playlist.push($node)
+	    		console.log(playlist)
 	    	});
 	    }
 	  });
@@ -139,6 +141,18 @@ $(document).ready(function(){
 		.done(function(response){
 			trackToUpdate.parent().remove()
 		});
+
+		playlist = [];
+
+		console.log(playlist);
+
+		$('.soundcloud-url').each(function(){
+			playlist.push($(this).attr('id'));
+			console.log(playlist);
+		});
+
+		// console.log(playlist);
+
 
 	});
 
