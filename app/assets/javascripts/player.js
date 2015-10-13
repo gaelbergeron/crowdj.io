@@ -5,7 +5,6 @@ var allTracks = [],
 
 $(document).ready(function(){
 
-	$('#play-button').on('click', function(){
 	var wavesurfer = Object.create(WaveSurfer);
 
 	wavesurfer.init({
@@ -21,28 +20,45 @@ $(document).ready(function(){
 		playlist.push($(this).attr('id'));
 	});
 
+	$('#play-button').on('click', function(){
+		if ( 2 === 2) {
+			wavesurfer.load(playlist[0]);
+		} else {
+			wavesurfer.play();
+		};
+
+	});
+
+
+	var target = $('#current_playlist')[0];
 
 	var observer = new MutationObserver(function( mutations ) {
 	  mutations.forEach(function( mutation ) {
-	    var newNodes = mutation.addedNodes; // DOM NodeList
-	    if( newNodes !== null ) { // If there are new nodes added
-	    	var $nodes = $( newNodes ); // jQuery set
+	    var newNodes = mutation.addedNodes;
+	    if( newNodes !== null ) {
+	    	var $nodes = $( newNodes );
 	    	$nodes.each(function() {
-	    		var $node = $( this );
-	    		// if( $node.hasClass( "message" ) ) {
-	    		// 	// do something
-	    		// }
-	    		debugger
+	    		var $node = $(this).children().eq(2).attr('id')
+	    		console.log(playlist)
+	    		playlist.push($node)
+	    		console.log(playlist)
 	    	});
 	    }
 	  });
 	});
 
-	wavesurfer.load(playlist[0]);
+	// Configuration of the observer:
+	var config = { 
+		attributes: true, 
+		childList: true, 
+		characterData: true 
+	};
 
-	$('#play-button').on('click', function(){
-		wavesurfer.play();
-	});
+	observer.observe(target, config);
+
+	// $('#play-button').on('click', function(){
+	// 	wavesurfer.play();
+	// });
 
 	$('#pause-button').on('click', function () {
 		wavesurfer.playPause();
@@ -109,6 +125,7 @@ $(document).ready(function(){
 			completedTrack = playlist[i];
 			i++;
 			playTrack(i);
+			playlist.splice(i-1, 1);
 		}
 		regExpId = '/.*/(.*)/'
 		trackId = completedTrack.match(regExpId)
@@ -117,7 +134,6 @@ $(document).ready(function(){
 		var playlist_id = $('#current_playlist').children().attr('id')
 		var trackpick_id = trackToUpdate.parent().attr('id')
 
-
 		$.ajax({
 			url: '/playlists/'+playlist_id+'/trackpicks/'+trackpick_id,
 			type: 'put'
@@ -125,6 +141,18 @@ $(document).ready(function(){
 		.done(function(response){
 			trackToUpdate.parent().remove()
 		});
+
+		playlist = [];
+
+		console.log(playlist);
+
+		$('.soundcloud-url').each(function(){
+			playlist.push($(this).attr('id'));
+			console.log(playlist);
+		});
+
+		// console.log(playlist);
+
 
 	});
 
@@ -146,7 +174,6 @@ $(document).ready(function(){
 			wavesurfer.drawBuffer();
 		}
 	});
-	});
-	});
 
+	});
 

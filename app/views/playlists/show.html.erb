@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<% if @playlist.user_id == current_user.id %>
+<% if current_user && @playlist.user_id == current_user.id %>
 <div id="container" >
   <div id="wave"></div>
 

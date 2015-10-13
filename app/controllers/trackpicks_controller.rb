@@ -15,14 +15,17 @@ include TrackpicksHelper
 
     if TrackpicksHelper.update_track(params)
 
-      @trackpick = TrackpicksHelper.find_init_trackpick(params)
+      @trackpick = Trackpick.new(playlist_id: params[:playlist_id], track_id: @track.id)
 
-        if TrackpicksHelper.update_trackpick(params, current_user.id)
+      @trackpick.update(user_id: current_user.id) if current_user
+
+        if @trackpick.save
           Pusher.trigger("playlist#{@playlist.id}", 'add_trackpick', render_to_string('/playlists/_show_track', :locals => {trackpick: @trackpick}, :layout => false))
           redirect_to playlist_path(@playlist)
         else
           redirect_to search_playlist_url(@playlist)
         end
+
     else
       redirect_to search_playlist_url(@playlist)
     end
