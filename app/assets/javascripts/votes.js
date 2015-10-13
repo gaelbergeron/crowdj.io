@@ -1,5 +1,5 @@
-// $(document).on("crowdj:playlists_show", function(){
-$(document).ready(function(){
+$(document).on("crowdj:playlists_show", function(){
+// $(document).ready(function(){
 
 
   $('body').on('click','a.up',upVote);
