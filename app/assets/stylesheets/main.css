@@ -1,0 +1,10 @@
+div#pop-up {
+  display: none;
+  /*position: absolute;*/
+  width: 280px;
+  padding: 10px;
+  background: #eeeeee;
+  color: #000000;
+  border: 1px solid #1a1a1a;
+  font-size: 90%;
+}
