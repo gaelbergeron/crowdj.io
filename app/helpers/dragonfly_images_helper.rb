@@ -1,0 +1,2 @@
+module DragonflyImagesHelper
+end

@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @dragonfly_image.asset.thumb('300x300#').url, class: "img-thumbnail" if @dragonfly_image.asset_stored? %>
+
+<%= link_to 'Edit', edit_dragonfly_image_path(@dragonfly_image) %> |
+<%= link_to 'Back', dragonfly_images_path %>
