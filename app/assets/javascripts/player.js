@@ -36,6 +36,7 @@ $(document).ready(function(){
 		playingSongDiv.appendTo('#active-song')
     });
 
+
 	var target = $('#current_playlist')[0];
 
 	var observer = new MutationObserver(function( mutations ) {
@@ -60,16 +61,11 @@ $(document).ready(function(){
 
 	observer.observe(target, config);
 
-	// $('#play-button').on('click', function(){
-	// 	wavesurfer.play();
-	// });
-
 	$('#pause-button').on('click', function () {
 		wavesurfer.playPause();
-	});
-
-	$('#stop-button').on('click', function(){
-		wavesurfer.stop();
+		if ($('#pause-button').html() === '<i class="fa fa-pause"></i>' ){
+			$('#pause-button').html('<i class="fa fa-play"></i>')
+		} else { $('#pause-button').html('<i class="fa fa-pause"></i>') }
 	});
 
 	$('#next-button').on('click', function () {
@@ -95,6 +91,24 @@ $(document).ready(function(){
 		playTrack(i);
 	});
 
+
+	$(function() {
+		var moveLeft = 20;
+  	var moveDown = 10;
+
+	  $('#next-button').hover(function(e) {
+	    $('div#pop-up').show();
+	    // .css('top', e.pageY + moveDown)
+     //  .css('left', e.pageX + moveLeft)
+     //  .appendTo('body');
+	  }, function() {
+	    $('div#pop-up').hide();
+	  });
+
+		$('#next-button').mousemove(function(e) {
+	    $("div#pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+	  });
+	});
 
 
 	function playTrack(number){

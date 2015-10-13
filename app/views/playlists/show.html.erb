@@ -1,6 +1,7 @@
-<h1>Enjoy <%= @playlist.name %></h1>
+<h1>Crowdj</h1>
+<h2>Enjoy <%= @playlist.name %></h2>
 
-<%= link_to 'Add a new track', search_playlist_path(@playlist) %>
+<%= link_to 'Don\'t be shy! Add a new track', search_playlist_path(@playlist) %>
 
 <div id="active-song"></div>
 
@@ -13,24 +14,23 @@
 </div>
 
 <% if current_user && @playlist.user_id == current_user.id %>
-<div id="container" >
-  <div id="wave"></div>
+<div id="wave"></div>
 
   <div id="control-bar">
     <div class="player-control">
       <div id="previous-button" title="Previous"><i class="fa fa-fast-backward"></i></div>
       <div id="play-button" title="Play"><i class="fa fa-play"></i></div>
       <div id="pause-button" title="Pause"><i class="fa fa-pause"></i></div>
-      <div id="stop-button" title="Stop"><i class="fa fa-stop"></i></div>
       <div id="next-button" title="Next"><i class="fa fa-fast-forward"></i></div>
     </div>
   </div>
+
+  <div id="pop-up">Dudette, dude: are you sure you wanto to cock block your pals?</div>
 
   <div id="track-details" >
     <p id="track-time">
       <span id="current">-</span> / <span id="total">-</span>
     </p>
-  </div>
-
 </div>
+
 <% end %>
