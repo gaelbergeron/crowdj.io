@@ -39,7 +39,9 @@ $(document).ready(function(){
 	    	var $nodes = $( newNodes );
 	    	$nodes.each(function() {
 	    		var $node = $(this).children().eq(2).attr('id')
+	    		console.log(playlist)
 	    		playlist.push($node)
+	    		console.log(playlist)
 	    	});
 	    }
 	  });
