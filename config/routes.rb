@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+
   resources :dragonfly_images
+  resources :twilio
+
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
-
+  post 'twilio/send_text' => 'twilio#send_text'
 
 
   devise_scope :user do
@@ -29,7 +32,7 @@ Rails.application.routes.draw do
 
     resources :votes
 
-    resources :users, only: [:show]
+    resources :users, only: [:show, :avatar]
 
     get 'users/profile' => 'users#show'
     get 'playlist/users/profile' => 'users#show'

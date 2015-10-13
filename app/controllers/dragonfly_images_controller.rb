@@ -30,9 +30,8 @@ class DragonflyImagesController < ApplicationController
     p "i am in create"
     p dragonfly_image_params
     @dragonfly_image = DragonflyImage.new(dragonfly_image_params)
-    @dragonfly_image.user_id = current_user.id
-    p @dragonfly_image
-
+    @dragonfly_image.save
+    # @dragonfly_image.user_id = current_user.id
 
     respond_to do |format|
       if @dragonfly_image.save

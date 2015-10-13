@@ -2,3 +2,11 @@
         <td><%= link_to image_tag(dragonfly_image.asset.thumb('64x64').url), dragonfly_image %></td>
 
                 <%= image_tag (dragonfly_image.asset.thumb('64x64').url) if dragonfly_image.asset.image_stored? %>
+
+
+
+
+     <% if f.object.asset_stored? %>
+      <%= image_tag f.object.asset.thumb('140x140').url, class: 'img-thumbnail' %>
+      <em>Current image</em>
+    <% end %>

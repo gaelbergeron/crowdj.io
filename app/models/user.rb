@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :trackpicks
   has_many :playlists
+  
   has_many :dragonfly_images
 
   devise :database_authenticatable, :registerable,

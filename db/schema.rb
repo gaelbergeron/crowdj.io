@@ -27,6 +27,9 @@ ActiveRecord::Schema.define(version: 20151013020040) do
   create_table "models", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "username",               default: "", null: false
+    t.string   "phone_number",           default: "", null: false
+    t.string   "picture_url",            default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -60,7 +63,6 @@ ActiveRecord::Schema.define(version: 20151013020040) do
 
   create_table "tracks", force: :cascade do |t|
     t.string   "title"
-    t.string   "artist"
     t.string   "artwork_url"
     t.string   "track_url"
     t.datetime "created_at",  null: false
