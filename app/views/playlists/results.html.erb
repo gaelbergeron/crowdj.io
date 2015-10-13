@@ -2,7 +2,7 @@
   <div id="searched-tracks">
     <p><%= track.title%></p>
     <div id="art">
-     <img src="<%=track.artwork_url%>"></img>
+     <img src="<%=track.artwork_url.to_s.gsub('-large', '-t300x300')%>"></img>
     </div>
       <div id="add">
         <%= form_for :trackpick, url: playlist_trackpicks_path(@playlist), method: "post" do |f| %>
