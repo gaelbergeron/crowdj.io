@@ -35,7 +35,7 @@ class PlaylistsController < ApplicationController
 
   def results
     @playlist = Playlist.find(params[:id])
-    @soundcloud_tracks = client.get('/tracks',:q => "#{params[:search][:name]}")
+    @soundcloud_tracks = client.get('/tracks',:limit => 30,:q => "#{params[:search][:name]}")
 
     @tracks = []
     @soundcloud_tracks.each do |track|
