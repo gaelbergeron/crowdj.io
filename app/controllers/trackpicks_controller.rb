@@ -37,7 +37,6 @@ include TrackpicksHelper
 
 
     render json: {status: "Trackpick status updated"}
-
   end
 
 end
