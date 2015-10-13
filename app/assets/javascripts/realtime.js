@@ -4,12 +4,12 @@ $(document).on("crowdj:playlists_show", function(){
   var channel =  pusher.subscribe('playlist'+playlistId)
 
   channel.bind('add_trackpick', function(data) {
-      $(".current_playlist#"+playlistId).append(data)
+    $(".current_playlist#"+playlistId).parent().replaceWith(data)
     });
   channel.bind('vote', function(data) {
-    $(".current_playlist#"+playlistId).replaceWith(data)
+    $(".current_playlist#"+playlistId).parent().replaceWith(data)
   });
   channel.bind('remove', function(data) {
-    $(".current_playlist#"+playlistId).replaceWith(data)
+    $(".current_playlist#"+playlistId).parent().replaceWith(data)
   });
 });
