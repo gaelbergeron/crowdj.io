@@ -42,7 +42,7 @@ $(document).ready(function(){
 	    		playlist.push($node)
 	    	});
 	    }
-	  });    
+	  });
 	});
 
 	// Configuration of the observer:
@@ -131,7 +131,6 @@ $(document).ready(function(){
 
 		var playlist_id = $('#current_playlist').children().attr('id')
 		var trackpick_id = trackToUpdate.parent().attr('id')
-		// debugger
 
 		$.ajax({
 			url: '/playlists/'+playlist_id+'/trackpicks/'+trackpick_id,
@@ -162,7 +161,5 @@ $(document).ready(function(){
 		}
 	});
 
-});
-	// });
-
+	});
 
