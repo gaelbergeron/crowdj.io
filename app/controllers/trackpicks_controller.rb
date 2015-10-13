@@ -13,8 +13,9 @@ include TrackpicksHelper
     @playlist = Playlist.where(id: params[:playlist_id]).first
 		@track = TrackpicksHelper.find_init_track(params)
     if TrackpicksHelper.update_track(params)
-      @trackpick = TrackpicksHelper.find_init_trackpick(params)
-        if TrackpicksHelper.update_trackpick(params, current_user.id)
+      @trackpick = Trackpick.new(playlist_id: params[:playlist_id], track_id: @track.id)
+      @trackpick.update(user_id: current_user.id) if current_user
+        if @trackpick.save
           Pusher.trigger("playlist_channel", 'add_trackpick', render_to_string('/playlists/_show_track', :locals => {trackpick: @trackpick}, :layout => false))
           redirect_to playlist_path(@playlist)
         else
@@ -26,7 +27,6 @@ include TrackpicksHelper
   end
 
   def update
-    p params
     @trackpick = Trackpick.find(params[:id])
     @trackpick.update(status: "Played")
     render json: {status: "Trackpick status updated"}
