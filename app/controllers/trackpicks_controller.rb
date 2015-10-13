@@ -42,7 +42,6 @@ include TrackpicksHelper
 
     Pusher.trigger("playlist#{@playlist.id}", 'remove', render_to_string('/playlists/_show_trackpicks', :layout => false))
 
-
     render json: {status: "Trackpick status updated"}
   end
 

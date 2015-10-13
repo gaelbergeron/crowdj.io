@@ -21,15 +21,19 @@ $(document).ready(function(){
 	});
 
 	$('#play-button').on('click', function(){
-        wavesurfer.load(playlist[0]);
-        $('#active-song').empty();
-        $('#play-button').hide();
-        regExpId = '/.*/(.*)/'
-				trackId = playlist[0].match(regExpId)
-				trackToUpdate = $('[id*='+trackId[1]+']')
-				playingSongDiv = trackToUpdate.parent()
-				playingSongDiv.children('a').hide()
-				playingSongDiv.appendTo('#active-song')
+		playlist = [];
+		$('.soundcloud-url').each(function(){
+			playlist.push($(this).attr('id'));
+		});
+    wavesurfer.load(playlist[0]);
+    $('#active-song').empty();
+    $('#play-button').hide();
+    regExpId = '/.*/(.*)/'
+		trackId = playlist[0].match(regExpId)
+		trackToUpdate = $('[id*='+trackId[1]+']')
+		playingSongDiv = trackToUpdate.parent()
+		playingSongDiv.children('a').hide()
+		playingSongDiv.appendTo('#active-song')
     });
 
 	var target = $('#current_playlist')[0];
@@ -91,15 +95,20 @@ $(document).ready(function(){
 		playTrack(i);
 	});
 
+
+
 	function playTrack(number){
 		wavesurfer.load(playlist[number]);
-		$('#active-song').empty();
 		regExpId = '/.*/(.*)/'
 		trackId = playlist[number].match(regExpId)
 		trackToUpdate = $('[id*='+trackId[1]+']')
 		playingSongDiv = trackToUpdate.parent()
 		playingSongDiv.children('a').hide()
 		playingSongDiv.appendTo('#active-song')
+		playingSongId = playingSongDiv.attr('id')
+		setTimeout(function(){
+			$(".current_playlist").children(".trackpick#"+playingSongId).remove()
+		}, 100)
 	}
 
 	// An event handler for when a track is loaded and ready to play.
@@ -114,7 +123,7 @@ $(document).ready(function(){
 		clearInterval(timer);
 		timer = setInterval(function() {
 			$('#current').text(formatTime(wavesurfer.getCurrentTime()));
-		}, 1000);
+		}, 100);
 	});
 
 	// Event handler when a track finishes playing
@@ -131,23 +140,27 @@ $(document).ready(function(){
 			type: 'put'
 		})
 		.done(function(response){
-			$('#active-song').empty()
+
 			// trackToUpdate.parent().remove()
 		});
 
+		$('#active-song').empty();
 		playlist = [];
 
 		$('.soundcloud-url').each(function(){
 			playlist.push($(this).attr('id'));
 		});
 
-		if (i >= playlist.length - 1) {
+		// if (i >= playlist.length - 1) {
+		if (playlist.length === 0) {
 			wavesurfer.stop();
 		}
 		else {
-			completedTrack = playlist[i];
-			i++;
-			playTrack(i);
+			playTrack(0)
+
+			// completedTrack = playlist[i];
+			// i++;
+			// playTrack(i);
 			// playlist.splice(i-1, 1);
 		}
 
