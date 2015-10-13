@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :dragonfly_images
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
 
 
@@ -15,12 +16,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  # match 'trackpicks/soundcloud' => "trackpicks#soundcloud", via: :post
-
-
-    # resources :tracks
-
-    # resources :soundcloud
 
     resources :playlists do
 
@@ -33,6 +28,17 @@ Rails.application.routes.draw do
     end
 
     resources :votes
+
+    resources :users, only: [:show]
+
+    get 'users/profile' => 'users#show'
+    get 'playlist/users/profile' => 'users#show'
+# for image upload dragonfly
+    get "text/:text" => Dragonfly.app.endpoint { |params, app| app.generate(:text, params[:text], 'font-size' => 42)
+    }
+
+    get "image" => Dragonfly.app.endpoint { |params, app| app.fetch_file("some/dir/#{params[:file]}").thumb(params[:size])
+    }
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

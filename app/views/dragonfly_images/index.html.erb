@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Dragonfly Images</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dragonfly_images.each do |dragonfly_image| %>
+      <tr>
+        <td><%= image_tag dragonfly_image.asset.thumb('64x64').url %></td>
+        <td><%= link_to 'Show', dragonfly_image %></td>
+        <td><%= link_to 'Edit', edit_dragonfly_image_path(dragonfly_image) %></td>
+        <td><%= link_to 'Destroy', dragonfly_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dragonfly image', new_dragonfly_image_path %>
