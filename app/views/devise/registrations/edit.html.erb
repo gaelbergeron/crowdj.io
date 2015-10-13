@@ -1,4 +1,4 @@
-<h2>Edit Hi<%= resource_name.to_s.humanize %></h2>
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -34,7 +34,6 @@
 <br>
 <br>
 
-<%= link_to "Update Images", dragonfly_images_path %>
 
 <h3>Cancel my account</h3>
 

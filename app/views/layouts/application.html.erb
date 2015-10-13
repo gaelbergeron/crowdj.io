@@ -12,7 +12,7 @@
   <%if user_signed_in? %>
     Logged in as <strong> <%= current_user.email%></strong><%= %> | 
     <a href='/logout'>Logout</a> | 
-    <%= link_to "Profile", edit_user_registration_path %> |
+    <%= link_to "Profile", users_profile_path %> |
 
   <%else%>
     <%= link_to "Login", login_path %> |

@@ -1,10 +1,10 @@
 class DragonflyImagesController < ApplicationController
-  before_action :set_dragonfly_image, only: [:show, :edit, :update, :destroy]
+  # before_action :set_dragonfly_image, only: [:show, :edit, :update, :destroy]
 
   # GET /dragonfly_images
   # GET /dragonfly_images.json
   def index
-    @dragonfly_images = DragonflyImage.all
+    @dragonfly_images = DragonflyImage.where(user_id: current_user.id)
   end
 
   # GET /dragonfly_images/1
@@ -19,12 +19,18 @@ class DragonflyImagesController < ApplicationController
 
   # GET /dragonfly_images/1/edit
   def edit
+    p "i am in edit"
   end
 
   # POST /dragonfly_images
   # POST /dragonfly_images.json
   def create
+    p "i am in create"
+    p dragonfly_image_params
     @dragonfly_image = DragonflyImage.new(dragonfly_image_params)
+    @dragonfly_image.user_id = current_user.id
+    p @dragonfly_image
+
 
     respond_to do |format|
       if @dragonfly_image.save
@@ -40,6 +46,7 @@ class DragonflyImagesController < ApplicationController
   # PATCH/PUT /dragonfly_images/1
   # PATCH/PUT /dragonfly_images/1.json
   def update
+    p "i am in update"
     respond_to do |format|
       if @dragonfly_image.update(dragonfly_image_params)
         format.html { redirect_to @dragonfly_image, notice: 'Dragonfly image was successfully updated.' }

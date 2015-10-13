@@ -29,6 +29,10 @@ Rails.application.routes.draw do
 
     resources :votes
 
+    resources :users, only: [:show]
+
+    get 'users/profile' => 'users#show'
+    get 'playlist/users/profile' => 'users#show'
 # for image upload dragonfly
     get "text/:text" => Dragonfly.app.endpoint { |params, app| app.generate(:text, params[:text], 'font-size' => 42)
     }
