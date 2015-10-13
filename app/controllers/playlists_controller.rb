@@ -8,7 +8,7 @@ class PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.find(params[:id])
-    # @trackpicks = @playlist.trackpicks.sort {|a,b| b.votecount <=> a.votecount}
+
     @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort {|a,b| b.votecount <=> a.votecount}
   end
 
@@ -36,6 +36,7 @@ class PlaylistsController < ApplicationController
   def results
     @playlist = Playlist.find(params[:id])
     @tracks = client.get('/tracks',:q => "#{params[:search][:name]}")
+
   end
 
   def update
