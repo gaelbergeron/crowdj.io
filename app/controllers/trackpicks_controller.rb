@@ -12,8 +12,11 @@ include TrackpicksHelper
 	def create
     @playlist = Playlist.where(id: params[:playlist_id]).first
 		@track = TrackpicksHelper.find_init_track(params)
+
     if TrackpicksHelper.update_track(params)
+
       @trackpick = TrackpicksHelper.find_init_trackpick(params)
+
         if TrackpicksHelper.update_trackpick(params, current_user.id)
           Pusher.trigger("playlist#{@playlist.id}", 'add_trackpick', render_to_string('/playlists/_show_track', :locals => {trackpick: @trackpick}, :layout => false))
           redirect_to playlist_path(@playlist)
