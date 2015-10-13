@@ -142,6 +142,18 @@ $(document).ready(function(){
 			trackToUpdate.parent().remove()
 		});
 
+		playlist = [];
+
+		console.log(playlist);
+
+		$('.soundcloud-url').each(function(){
+			playlist.push($(this).attr('id'));
+			console.log(playlist);
+		});
+
+		// console.log(playlist);
+
+
 	});
 
 	wavesurfer.on('seek', function () {
