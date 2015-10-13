@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require sync
+//= require bootstrap-sprockets
 //= require src/wavesurfer
 //= require src/util
 //= require src/webaudio
