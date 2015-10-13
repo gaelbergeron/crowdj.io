@@ -20,7 +20,7 @@ include TrackpicksHelper
       @trackpick.update(user_id: current_user.id) if current_user
 
         if @trackpick.save
-          Pusher.trigger("playlist_channel", 'add_trackpick', render_to_string('/playlists/_show_track', :locals => {trackpick: @trackpick}, :layout => false))
+          Pusher.trigger("playlist#{@playlist.id}", 'add_trackpick', render_to_string('/playlists/_show_track', :locals => {trackpick: @trackpick}, :layout => false))
           redirect_to playlist_path(@playlist)
         else
           redirect_to search_playlist_url(@playlist)
