@@ -2,6 +2,8 @@
 
 <%= link_to 'Add a new track', search_playlist_path(@playlist) %>
 
+<div id="playing-song"></div>
+
 <div id='current_playlist'>
   <div class="current_playlist" id='<%= @playlist.id %>'>
     <% @trackpicks.each do |trackpick| %>

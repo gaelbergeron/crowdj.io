@@ -21,14 +21,15 @@ $(document).ready(function(){
 	});
 
 	$('#play-button').on('click', function(){
-		if ( 2 === 2) {
-			wavesurfer.load(playlist[0]);
-		} else {
-			wavesurfer.play();
-		};
-
-	});
-
+        wavesurfer.load(playlist[0]);
+        $('#play-button').hide();
+        regExpId = '/.*/(.*)/'
+				trackId = playlist[0].match(regExpId)
+				trackToUpdate = $('[id*='+trackId[1]+']')
+				playingSongDiv = trackToUpdate.parent()
+				playingSongDiv.children('a').hide()
+				playingSongDiv.appendTo('#playing-song')
+    });
 
 	var target = $('#current_playlist')[0];
 
@@ -39,19 +40,17 @@ $(document).ready(function(){
 	    	var $nodes = $( newNodes );
 	    	$nodes.each(function() {
 	    		var $node = $(this).children().eq(2).attr('id')
-	    		console.log(playlist)
 	    		playlist.push($node)
-	    		console.log(playlist)
 	    	});
 	    }
 	  });
 	});
 
 	// Configuration of the observer:
-	var config = { 
-		attributes: true, 
-		childList: true, 
-		characterData: true 
+	var config = {
+		attributes: true,
+		childList: true,
+		characterData: true
 	};
 
 	observer.observe(target, config);
@@ -93,6 +92,13 @@ $(document).ready(function(){
 
 	function playTrack(number){
 			wavesurfer.load(playlist[number]);
+			console.log(playlist[number])
+			// regExpId = '/.*/(.*)/'
+			// trackId = completedTrack.match(regExpId)
+			// trackToUpdate = $('[id*='+trackId[1]+']')
+
+			// var playlist_id = $('#current_playlist').children().attr('id')
+			// var trackpick_id = trackToUpdate.parent().attr('id')
 	}
 
 	// An event handler for when a track is loaded and ready to play.
@@ -143,15 +149,9 @@ $(document).ready(function(){
 
 		playlist = [];
 
-		console.log(playlist);
-
 		$('.soundcloud-url').each(function(){
 			playlist.push($(this).attr('id'));
-			console.log(playlist);
 		});
-
-		// console.log(playlist);
-
 
 	});
 
