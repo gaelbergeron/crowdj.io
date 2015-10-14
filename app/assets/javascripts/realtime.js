@@ -15,4 +15,7 @@ $(document).on("crowdj:playlists_show", function(){
   channel.bind('activate', function(data) {
     $("#active-song").html(data)
   })
+  channel.bind('stop', function(data) {
+    $("#active-song").html(data)
+  })
 });
