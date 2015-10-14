@@ -1,5 +1,6 @@
 class DragonflyImage < ActiveRecord::Base
 	dragonfly_accessor :asset
+	
 	has_many :users
 
 	# validates_property :width, of: :asset, in: (0..900)

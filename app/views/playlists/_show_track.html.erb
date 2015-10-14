@@ -1,12 +1,10 @@
 <div class='trackpick' id="<%= trackpick.id%>" >
   <img src="<%= trackpick.track.artwork_url.to_s.gsub('-large', '-t500x500') %>"></img>
   <br>
-
   <div class="soundcloud-url" id="<%= trackpick.track.track_url + '?client_id=' + ENV['CLIENT_ID'] %>"></div>
     <div id="track-title"><p><%= trackpick.track.title %></p></div>
-    <a href="" class="up"><i class="fa fa-hand-o-up"></i></a>
+      <a href="" class="up"><i class="fa fa-hand-o-up"></i></a>
     <div id="vote-count"><p id="vote-count<%=trackpick.id%>"><%=trackpick.votecount%></p></div>
-    <a href="" class="down"><i class="fa fa-hand-o-down"></i></a>
+      <a href="" class="down"><i class="fa fa-hand-o-down"></i></a>
     <div id="add-time"><p>Added on <%= trackpick.created_at.strftime("%F")%></p></div>
-
 </div>

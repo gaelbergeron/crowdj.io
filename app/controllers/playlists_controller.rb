@@ -2,14 +2,12 @@
 
 class PlaylistsController < ApplicationController
 
-  # def index
-  #   @playlists = Playlist.all
-  # end
-
   def show
     @playlist = Playlist.find(params[:id])
 
-    @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort {|a,b| b.votecount <=> a.votecount}
+    @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
+
+    @active_trackpick = @playlist.trackpicks.where(:status => 'playing').first
   end
 
   def new
@@ -20,11 +18,13 @@ class PlaylistsController < ApplicationController
   end
 
   def create
+
     @playlist = Playlist.new(playlist_params)
 
     if @playlist.save
       redirect_to @playlist
     else
+     @playlist_errors = @playlist.errors.full_messages[0]
       render 'new'
     end
 
@@ -35,7 +35,7 @@ class PlaylistsController < ApplicationController
 
   def results
     @playlist = Playlist.find(params[:id])
-    @soundcloud_tracks = client.get('/tracks',:q => "#{params[:search][:name]}")
+    @soundcloud_tracks = client.get('/tracks',:limit => 30,:q => "#{params[:search][:name]}")
 
     @tracks = []
     @soundcloud_tracks.each do |track|

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  require 'twilio-ruby' 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
 
@@ -28,5 +29,10 @@ class ApplicationController < ActionController::Base
       :redirect_uri => ENV["REDIRECT_URI"]
         )
   end
+
+ 
+  # put your own credentials here 
+
+
 
 end

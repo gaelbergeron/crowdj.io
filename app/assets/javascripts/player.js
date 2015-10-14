@@ -21,9 +21,28 @@ $(document).ready(function(){
 	});
 
 	$('#play-button').on('click', function(){
-		wavesurfer.load(playlist[0]);
-		$('#play-button').hide();
-	});
+		playlist = [];
+		$('.soundcloud-url').each(function(){
+			playlist.push($(this).attr('id'));
+		});
+    wavesurfer.load(playlist[0]);
+    // $('#active-song').empty();
+    $('#play-button').hide();
+    regExpId = '/.*/(.*)/'
+		trackId = playlist[0].match(regExpId)
+		trackToUpdate = $('[id*='+trackId[1]+']')
+		playingSongDiv = trackToUpdate.parent()
+		playingSongDiv.children('a').hide()
+		playingSongDiv.appendTo('#active-song')
+		playingSongId = playingSongDiv.attr('id')
+		playlist_id = $('.current_playlist').attr('id')
+		$.ajax({
+			url: '/playlists/'+playlist_id+'/trackpicks/'+playingSongId+'/play',
+			type: 'post'
+		})
+		.done(function(response){
+		});
+  });
 
 
 	var target = $('#current_playlist')[0];
@@ -42,10 +61,10 @@ $(document).ready(function(){
 	});
 
 	// Configuration of the observer:
-	var config = { 
-		attributes: true, 
-		childList: true, 
-		characterData: true 
+	var config = {
+		attributes: true,
+		childList: true,
+		characterData: true
 	};
 
 	observer.observe(target, config);
@@ -53,7 +72,7 @@ $(document).ready(function(){
 	$('#pause-button').on('click', function () {
 		wavesurfer.playPause();
 		if ($('#pause-button').html() === '<i class="fa fa-pause"></i>' ){
-			$('#pause-button').html('<i class="fa fa-play"></i>') 
+			$('#pause-button').html('<i class="fa fa-play"></i>')
 		} else { $('#pause-button').html('<i class="fa fa-pause"></i>') }
 	});
 
@@ -80,6 +99,7 @@ $(document).ready(function(){
 		playTrack(i);
 	});
 
+
 	$(function() {
 		var moveLeft = 20;
   	var moveDown = 10;
@@ -92,16 +112,28 @@ $(document).ready(function(){
 	  }, function() {
 	    $('div#pop-up').hide();
 	  });
-	
+
 		$('#next-button').mousemove(function(e) {
 	    $("div#pop-up").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
 	  });
 	});
 
 
-
 	function playTrack(number){
-			wavesurfer.load(playlist[number]);
+		wavesurfer.load(playlist[number]);
+		regExpId = '/.*/(.*)/'
+		trackId = playlist[number].match(regExpId)
+		trackToUpdate = $('[id*='+trackId[1]+']')
+		playingSongDiv = trackToUpdate.parent()
+		playingSongDiv.children('a').hide()
+		playingSongDiv.appendTo('#active-song')
+		playingSongId = playingSongDiv.attr('id')
+		playlist_id = $('.current_playlist').attr('id')
+		$.ajax({
+			url: '/playlists/'+playlist_id+'/trackpicks/'+playingSongId+'/play',
+			type: 'post'
+		})
+		.done(function(response){});
 	}
 
 	// An event handler for when a track is loaded and ready to play.
@@ -116,48 +148,36 @@ $(document).ready(function(){
 		clearInterval(timer);
 		timer = setInterval(function() {
 			$('#current').text(formatTime(wavesurfer.getCurrentTime()));
-		}, 1000);
-		// In the playlist array mark the track as currently playing
-		allTracks.forEach(function (tr) {
-			tr.playing = false;
-		});
-		playlist[i].playing = true;
-
+		}, 100);
 	});
 
 	// Event handler when a track finishes playing
 	wavesurfer.on('finish', function () {
-		if (i >= playlist.length - 1) {
-			wavesurfer.stop();
-		}
-		else {
-			completedTrack = playlist[i];
-			i++;
-			playTrack(i);
-			playlist.splice(i-1, 1);
-		}
-		regExpId = '/.*/(.*)/'
-		trackId = completedTrack.match(regExpId)
-		trackToUpdate = $('[id*='+trackId[1]+']')
 
 		var playlist_id = $('#current_playlist').children().attr('id')
-		var trackpick_id = trackToUpdate.parent().attr('id')
+		var trackpick_id = $('#active-song').children().attr('id')
+
 		$.ajax({
 			url: '/playlists/'+playlist_id+'/trackpicks/'+trackpick_id,
 			type: 'put'
 		})
-		.done(function(response){
-			trackToUpdate.parent().remove()
-		});
+		.done(function(response){});
+
+		$('#active-song').empty();
 
 		playlist = [];
 
-		console.log(playlist);
-
 		$('.soundcloud-url').each(function(){
 			playlist.push($(this).attr('id'));
-			console.log(playlist);
 		});
+
+		if (playlist.length === 0) {
+			wavesurfer.stop()
+		}
+		else {
+			playTrack(0)
+		}
+
 	});
 
 	wavesurfer.on('seek', function () {
