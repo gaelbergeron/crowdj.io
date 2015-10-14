@@ -24,7 +24,11 @@ Rails.application.routes.draw do
           post 'results'
       end
 
-      resources :trackpicks
+      resources :trackpicks do
+        member do
+          post 'play'
+        end
+      end
     end
 
     resources :votes

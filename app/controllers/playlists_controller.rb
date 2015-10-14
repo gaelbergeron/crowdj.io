@@ -10,6 +10,8 @@ class PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
 
     @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort {|a,b| b.votecount <=> a.votecount}
+    @active_trackpick = @playlist.trackpicks.where(:status => 'playing').first
+    p @active_trackpick
   end
 
   def new

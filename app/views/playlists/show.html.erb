@@ -3,7 +3,11 @@
 
 <%= link_to 'Don\'t be shy! Add a new track', search_playlist_path(@playlist) %>
 
-<div id="active-song"></div>
+<div id="active-song">
+  <% if @active_trackpick %>
+    <%= render partial: 'active_song', locals: {trackpick: @active_trackpick} %>
+  <% end %>
+</div>
 
 <div id='current_playlist'>
   <div class="current_playlist" id='<%= @playlist.id %>'>

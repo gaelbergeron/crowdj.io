@@ -34,7 +34,15 @@ $(document).ready(function(){
 		playingSongDiv = trackToUpdate.parent()
 		playingSongDiv.children('a').hide()
 		playingSongDiv.appendTo('#active-song')
-    });
+		playingSongId = playingSongDiv.attr('id')
+		playlist_id = $('.current_playlist').attr('id')
+		$.ajax({
+			url: '/playlists/'+playlist_id+'/trackpicks/'+playingSongId+'/play',
+			type: 'post'
+		})
+		.done(function(response){
+		});
+  });
 
 
 	var target = $('#current_playlist')[0];
@@ -120,9 +128,13 @@ $(document).ready(function(){
 		playingSongDiv.children('a').hide()
 		playingSongDiv.appendTo('#active-song')
 		playingSongId = playingSongDiv.attr('id')
-		// setTimeout(function(){
-		// 	$(".current_playlist").children(".trackpick#"+playingSongId).remove()
-		// }, 100)
+		playlist_id = $('.current_playlist').attr('id')
+		$.ajax({
+			url: '/playlists/'+playlist_id+'/trackpicks/'+playingSongId+'/play',
+			type: 'post'
+		})
+		.done(function(response){
+		});
 	}
 
 	// An event handler for when a track is loaded and ready to play.
@@ -159,6 +171,7 @@ $(document).ready(function(){
 		});
 
 		$('#active-song').empty();
+
 		playlist = [];
 
 		$('.soundcloud-url').each(function(){
@@ -167,6 +180,7 @@ $(document).ready(function(){
 
 		// if (i >= playlist.length - 1) {
 		if (playlist.length === 0) {
+			console.log("stops wavesurfer")
 			wavesurfer.stop();
 		}
 		else {
