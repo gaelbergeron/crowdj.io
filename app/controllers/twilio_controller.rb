@@ -2,10 +2,13 @@ class TwilioController < ApplicationController
 	skip_before_filter :verify_authenticity_token
 
 	def send_text
-		p "i am in send_text"
-		p params
-		@phone = '12679183560'
-		self.send_text_message(@phone)
+
+		text_numbers_array = params[:phone].gsub(/tel=/, "").split("+")
+		url = params[:url]
+		message_body = "Click link to join the party #{url}"
+		# p text_numbers_array
+		# # p @phone = '12679183560'
+		self.send_text_message(text_numbers_array,  message_body)
 
 	end
 
@@ -22,21 +25,23 @@ class TwilioController < ApplicationController
     @image_url = "http://howtodocs.s3.amazonaws.com/new-relic-monitor.png"
   end
   
-  def send_text_message(phone_number_to_send)
+  def send_text_message(phone_number_to_send, message_body)
 
-    p "i have hit the method send text"
     account_sid = ENV['TWILIO_ACCOUNT_SID']
-
     auth_token = ENV['TWILIO_AUTH_TOKEN']
     phone_number = ENV['TWILIO_NUMBER'] 
+    
   # set up a client to talk to the Twilio REST API 
-    @client = Twilio::REST::Client.new account_sid, auth_token 
-   
-    @client.account.messages.create({
-    :from => phone_number, 
-    :to => phone_number_to_send, 
-    :body => 'This is a test',  
-    })
+    @client = Twilio::REST::Client.new account_sid, auth_token
+
+     phone_number_to_send.each do |text|
+   	
+	    @client.account.messages.create({
+		    :from => phone_number, 
+		    :to => text, 
+		    :body => message_body,  
+	    })
+	  end
   end
 
 end

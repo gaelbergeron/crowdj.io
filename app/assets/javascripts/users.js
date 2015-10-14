@@ -4,4 +4,6 @@ $(".btn-pref .btn").click(function () {
     // $(".tab").addClass("active"); // instead of this do the below 
     $(this).removeClass("btn-default").addClass("btn-primary");   
 });
+
+console.log("testing")
 });

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
   post 'twilio/send_text' => 'twilio#send_text'
+  # post 'playlists/twilio/send_text' => 'twilio#send_text'
 
 
   devise_scope :user do
