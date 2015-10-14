@@ -20,7 +20,7 @@ include TrackpicksHelper
       @trackpick.update(user_id: current_user.id) if current_user
 
         if @trackpick.save
-          @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [track.votecount,track.created_at]}
+          @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
           Pusher.trigger("playlist#{@playlist.id}", 'add_trackpick', render_to_string('/playlists/_show_trackpicks', :layout => false))
           redirect_to playlist_path(@playlist)
         else
@@ -38,7 +38,7 @@ include TrackpicksHelper
 
     @playlist = Playlist.where(:id => params[:playlist_id]).first
 
-    @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [track.votecount,track.created_at]}
+    @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
 
     Pusher.trigger("playlist#{@playlist.id}", 'remove', render_to_string('/playlists/_show_trackpicks', :layout => false))
 
@@ -51,7 +51,7 @@ include TrackpicksHelper
 
     @playlist = Playlist.where(:id => params[:playlist_id]).first
 
-    @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [track.votecount,track.created_at]}
+    @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
     Pusher.trigger("playlist#{@playlist.id}", 'remove', render_to_string('/playlists/_show_trackpicks', :layout => false))
     Pusher.trigger("playlist#{@playlist.id}", 'activate', render_to_string('/playlists/_active_song', :layout => false, :locals => {trackpick: @trackpick}))
 
