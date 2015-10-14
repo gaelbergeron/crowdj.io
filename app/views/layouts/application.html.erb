@@ -3,21 +3,14 @@
 <head>
   <title>Crowdj</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet prefetch" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
 </head>
 
 <header>
-  <%if user_signed_in? %>
-    Logged in as <strong> <%= current_user.email%></strong><%= %> | 
-    <a href='/logout'>Logout</a> | 
-    <%= link_to "Profile", users_profile_path %> |
 
-  <%else%>
-    <%= link_to "Login", login_path %> |
-    <%= link_to "Sign up", new_user_registration_path %>
-  <%end%>
 </header>
 <body>
 
@@ -30,10 +23,65 @@
     <p class="alert alert-danger"><%= alert %></p>
   <% end %>
 
-<%= yield %>
 
-<!-- <script src="assets/javascripts/application.js"></script>
- -->
+
+    <div id="wrapper">
+        <div class="overlay"></div>
+    
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a>All you need is love</a>
+                </li>
+                <li>
+                    <a href="http://localhost:3000"><strong>Home</strong></a>
+                </li>
+                      <%if user_signed_in? %>
+                <li>
+                    <a href="#"><strong>Logged in as <%= current_user.email%></strong></a>
+                </li>
+                <li>
+                    <%= link_to "Profile", users_profile_path %>
+                </li>
+                <li>
+                    <a href="#"></i><strong>Create a new playlist</strong></a>
+                </li>
+                <li>
+                    <a href="/logout"><strong>Logout</strong></a>
+                </li>
+                <%else%>
+                <li>
+                    <a href="#"><%= link_to "Login", login_path %></a>
+                </li>
+                <li>
+                    <a href="#"><%= link_to "Sign up", new_user_registration_path %></a>
+                </li>
+                 <%end%>
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+          </button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <h1 class="page-header"><%= image_tag("c-80.png") %>rowdj</h1>  
+                        <%= yield %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
 </body>
 <script>
   var event_name = 'crowdj:<%= controller_name %>_<%= action_name %>';
