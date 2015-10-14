@@ -3,21 +3,14 @@
 <head>
   <title>Crowdj</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet prefetch" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
 </head>
 
 <header>
-  <%if user_signed_in? %>
-    Logged in as <strong> <%= current_user.email%></strong><%= %> | 
-    <a href='/logout'>Logout</a> | 
-    <%= link_to "Profile", users_profile_path %> |
 
-  <%else%>
-    <%= link_to "Login", login_path %> |
-    <%= link_to "Sign up", new_user_registration_path %>
-  <%end%>
 </header>
 <body>
 
@@ -30,7 +23,7 @@
     <p class="alert alert-danger"><%= alert %></p>
   <% end %>
 
-<%= yield %>
+
 
     <div id="wrapper">
         <div class="overlay"></div>
@@ -39,42 +32,32 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
-                       Bootstrap 3
-                    </a>
+                    <a>All you need is love</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+                    <a href="http://localhost:3000"><strong>Home</strong></a>
+                </li>
+                      <%if user_signed_in? %>
+                <li>
+                    <a href="#"><strong>Logged in as <%= current_user.email%></strong></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-folder"></i> Page one</a>
+                    <%= link_to "Profile", users_profile_path %>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-file-o"></i> Second page</a>
+                    <a href="#"></i><strong>Create a new playlist</strong></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
+                    <a href="/logout"><strong>Logout</strong></a>
                 </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Dropdown heading</li>
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
+                <%else%>
+                <li>
+                    <a href="#"><%= link_to "Login", login_path %></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-bank"></i> Page four</a>
+                    <a href="#"><%= link_to "Sign up", new_user_registration_path %></a>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-dropbox"></i> Page 5</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-twitter"></i> Last page</a>
-                </li>
+                 <%end%>
             </ul>
         </nav>
         <!-- /#sidebar-wrapper -->
@@ -89,7 +72,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <h1 class="page-header">Awesome Bootstrap 3 Sidebar Navigation</h1>  
+                        <h1 class="page-header"><%= image_tag("c-80.png") %>rowdj</h1>  
+                        <%= yield %>
                     </div>
                 </div>
             </div>
@@ -98,7 +82,6 @@
 
     </div>
     <!-- /#wrapper -->
-
 </body>
 <script>
   var event_name = 'crowdj:<%= controller_name %>_<%= action_name %>';

@@ -1,34 +1,47 @@
-<h1>Crowdj</h1>
-<h2>Enjoy <%= @playlist.name %></h2>
+<div id="playlist-container">
 
-<%= link_to 'Don\'t be shy! Add a new track', search_playlist_path(@playlist) %>
-
-<div id='current_playlist'>
-  <div class="current_playlist" id='<%= @playlist.id %>'>
-    <% @trackpicks.each do |trackpick| %>
-        <%= render partial: 'show_track', locals: {trackpick: trackpick} %>
-    <% end %>
+  <div id="playlist-name">
+    Enjoy <strong><%= @playlist.name %></strong>
   </div>
-</div>
 
-<% if current_user && @playlist.user_id == current_user.id %>
-<div id="wave"></div>
+  <div id="shy">
+    And don't be shy!
+  </div>
+  <div class="add-track">
+    <%= link_to 'Add tracks', search_playlist_path(@playlist) %>
+  </div>
+  <div class="and-friend">
+    And friends!
+  </div>
 
-  <div id="control-bar">
-    <div class="player-control">
-      <div id="previous-button" title="Previous"><i class="fa fa-fast-backward"></i></div>
-      <div id="play-button" title="Play"><i class="fa fa-play"></i></div>
-      <div id="pause-button" title="Pause"><i class="fa fa-pause"></i></div>
-      <div id="next-button" title="Next"><i class="fa fa-fast-forward"></i></div>
+  <div id='current_playlist'>
+    <div class="current_playlist" id='<%= @playlist.id %>'>
+      <% @trackpicks.each do |trackpick| %>
+          <%= render partial: 'show_track', locals: {trackpick: trackpick} %>
+      <% end %>
     </div>
   </div>
 
-  <div id="pop-up">Dudette, dude: are you sure you wanto to cock block your pals?</div>
+  <% if current_user && @playlist.user_id == current_user.id %>
+  <div id="wave"></div>
 
-  <div id="track-details" >
-    <p id="track-time">
-      <span id="current">-</span> / <span id="total">-</span>
-    </p>
+    <div id="control-bar">
+      <div class="player-control">
+        <div id="previous-button" title="Previous"><i class="fa fa-fast-backward"></i></div>
+        <div id="play-button" title="Play"><i class="fa fa-play"></i></div>
+        <div id="pause-button" title="Pause"><i class="fa fa-pause"></i></div>
+        <div id="next-button" title="Next"><i class="fa fa-fast-forward"></i></div>
+      </div>
+    </div>
+
+    <div id="pop-up">Dudette, dude: are you sure you wanto to cock block your pals?</div>
+
+    <div id="track-details" >
+      <p id="track-time">
+        <span id="current">-</span> / <span id="total">-</span>
+      </p>
+    </div>
+
+  <% end %>
+
 </div>
-
-<% end %>

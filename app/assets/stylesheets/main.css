@@ -8,3 +8,60 @@ div#pop-up {
   border: 1px solid #1a1a1a;
   font-size: 90%;
 }
+
+#playlist-container {
+  width: 100%;
+  display:block;
+  margin: auto;
+}
+
+.trackpick {
+  width: 100%;
+  margin: auto;
+}
+
+
+#playlist-name {
+  font-size: 3em;
+  width: 100%;
+  border-bottom-color: rgb(242, 242, 242);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 0.5em;
+}
+
+#shy {
+  float: left;
+  width: 8em;
+  height: 2.2em;
+  font-size: 2em;
+  margin-bottom: 1em;
+  margin-top: 0.7em;
+}
+
+.add-track {
+  text-align:center;
+  vertical-align: middle;
+  border-radius: 15px;
+  background-color: #a0c263;
+  float: left;
+  width: 30%;
+  height: 3em;
+  color: white;
+  margin-left: 1em;
+  margin-top: 0.6em;
+  font-size: 1.5em;
+}
+
+.and-friend {
+  text-align: center;
+  border-radius: 15px;
+  background-color: #49c4db;
+  float: left;
+  width: 30%;
+  height: 3em;
+  color: white;
+  margin-left: 1em;
+  margin-top: 0.6em;
+  font-size: 1.5em;
+}
