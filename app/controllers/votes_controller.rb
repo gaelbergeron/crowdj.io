@@ -1,8 +1,10 @@
 class VotesController < ApplicationController
 
   def create
+    p "*" * 50
+    p params
+    p "*" * 50
     @trackpick = Trackpick.where(:id => params[:trackpick]).first
-
     # Isolates the users that have voted
     voters = []
     @trackpick.votes.each do |vote|
