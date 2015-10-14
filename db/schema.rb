@@ -11,25 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013020040) do
+ActiveRecord::Schema.define(version: 20151014174642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dragonfly_images", force: :cascade do |t|
-    t.string   "asset_uid"
-    t.string   "asset_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-  end
-
   create_table "models", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
-    t.string   "username",               default: "", null: false
-    t.string   "phone_number",           default: "", null: false
-    t.string   "picture_url",            default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -65,8 +54,9 @@ ActiveRecord::Schema.define(version: 20151013020040) do
     t.string   "title"
     t.string   "artwork_url"
     t.string   "track_url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "soundcloud_url"
   end
 
   create_table "users", force: :cascade do |t|

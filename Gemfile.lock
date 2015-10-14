@@ -48,11 +48,6 @@ GEM
       sass (~> 3.2)
     builder (3.2.2)
     byebug (6.0.2)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -174,7 +169,6 @@ GEM
     rdoc (4.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rmagick (2.15.4)
     sass (3.4.19)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -234,7 +228,6 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass (~> 3.2.0)
   byebug
-  carrierwave
   coffee-rails (~> 4.1.0)
   devise
   dotenv-rails
@@ -247,7 +240,6 @@ DEPENDENCIES
   pusher
   rack-cache
   rails (= 4.2.4)
-  rmagick
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   soundcloud

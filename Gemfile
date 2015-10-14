@@ -26,8 +26,6 @@ gem 'devise'
 
 gem 'dotenv-rails'
 gem 'soundcloud'
-gem 'rmagick'
-gem 'carrierwave'
 gem 'gravtastic'
 gem 'twilio-ruby', '~> 4.2.1'
 gem 'bootstrap-sass', '~> 3.2.0'

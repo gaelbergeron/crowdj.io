@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  mount_uploader :picture_url, ImageUploader
-  
+
+
   include Gravtastic
   gravtastic
 
@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :trackpicks
   has_many :playlists
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
