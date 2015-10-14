@@ -99,6 +99,7 @@ GEM
       railties (>= 3.2, < 5.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     hashie (2.1.2)
     httmultiparty (0.3.16)
       httparty (>= 0.7.3)
@@ -237,6 +238,7 @@ DEPENDENCIES
   dragonfly (~> 1.0.12)
   faye
   font-awesome-rails
+  gravtastic
   jbuilder (~> 2.0)
   jquery-rails
   pg

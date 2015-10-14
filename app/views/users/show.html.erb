@@ -5,7 +5,11 @@
             <!-- http://lorempixel.com/850/280/people/9/ -->
         </div>
         <div class="useravatar">
-          <%= image_tag("cat_animated.gif") %>
+          <% if user_signed_in? %>
+            <%= image_tag current_user.gravatar_url %>
+          <% else%>
+            <%= image_tag("cat_animated.gif", id: "img_logo", class: "img-circle") %>
+          <% end %>
         </div>
         <div class="card-info"> <span class="card-title"><%= current_user.email %></span>
 
