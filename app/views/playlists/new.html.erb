@@ -1,5 +1,11 @@
 <h1>Create a new playlist</h1>
 
+<div class="playlist-errors">
+  <% if @playlist_errors %>
+    <p><%= "Playlist #{@playlist_errors.downcase}" %></p>
+  <% end %>
+</div>
+
 <%= form_for :playlist, url: playlists_path, method: "post" do |f| %>
   <p>
     <%= f.label :name %>

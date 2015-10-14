@@ -21,6 +21,7 @@ include TrackpicksHelper
 
         if @trackpick.save
           @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
+
           Pusher.trigger("playlist#{@playlist.id}", 'add_trackpick', render_to_string('/playlists/_show_trackpicks', :layout => false))
           redirect_to playlist_path(@playlist)
         else
