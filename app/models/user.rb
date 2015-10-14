@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  mount_uploader :picture_url, ImageUploader
+  
   include Gravtastic
   gravtastic
 
