@@ -36,15 +36,10 @@ include TrackpicksHelper
 
   def update
     @trackpick = Trackpick.find(params[:id])
-    p "*"*50
-    p @trackpick
-    p "*"*50
-    @trackpick.update(status: "Played")
-    p "*"*50
-    p @trackpick
-    p "*"*50
 
-    @playlist = Playlist.where(:id => params[:playlist_id]).first
+    @trackpick.update(status: "Played")
+
+\\    @playlist = Playlist.where(:id => params[:playlist_id]).first
 
     @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
 
