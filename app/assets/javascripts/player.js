@@ -26,7 +26,6 @@ $(document).ready(function(){
 			playlist.push($(this).attr('id'));
 		});
     wavesurfer.load(playlist[0]);
-    // $('#active-song').empty();
     $('#play-button').hide();
     regExpId = '/.*/(.*)/'
 		trackId = playlist[0].match(regExpId)
@@ -155,7 +154,7 @@ $(document).ready(function(){
 	wavesurfer.on('finish', function () {
 
 		var playlist_id = $('#current_playlist').children().attr('id')
-		var trackpick_id = $('#active-song').children().attr('id')
+		var trackpick_id = $('#active-song').children('.trackpick').attr('id')
 
 		$.ajax({
 			url: '/playlists/'+playlist_id+'/trackpicks/'+trackpick_id,
