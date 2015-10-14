@@ -7,7 +7,15 @@
       <a href="" class="increment down"></a>
       <div class="count" id="vote-count<%=trackpick.id%>"><%=trackpick.votecount%></div>
     </div>
-    <div id="track-details"><p id="track-title"><%= trackpick.track.title %></p><p id="track-date">Added on <%= trackpick.created_at.strftime("%F")%></p></div>
+    <div id="track-details">
+      <p id="track-title"><%= trackpick.track.title %></p>
+      <p id="track-date">Added <%= time_ago_in_words(trackpick.created_at) %> ago
+        <% if trackpick.user && trackpick.user.username %>
+          by <%= trackpick.user.username %>
+        <% end %>
+      </p>
+    </div>
+
 </div>
 
 

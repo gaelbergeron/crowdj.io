@@ -36,7 +36,13 @@ include TrackpicksHelper
 
   def update
     @trackpick = Trackpick.find(params[:id])
+    p "*"*50
+    p @trackpick
+    p "*"*50
     @trackpick.update(status: "Played")
+    p "*"*50
+    p @trackpick
+    p "*"*50
 
     @playlist = Playlist.where(:id => params[:playlist_id]).first
 

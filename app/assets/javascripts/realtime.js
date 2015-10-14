@@ -16,6 +16,6 @@ $(document).on("crowdj:playlists_show", function(){
     $("#active-song").html(data)
   })
   channel.bind('stop', function(data) {
-    $("#active-song").html(data)
+    $("#active-song").empty()
   })
 });

@@ -7,6 +7,6 @@
   <%= trackpick.track.title %>
   <p id="vote-count<%=trackpick.id%>"><%=trackpick.votecount%></p>
   <p>
-    Added on <%= trackpick.created_at.strftime("%F") %>
+    Added <%= time_ago_in_words(trackpick.created_at) %> ago
   </p>
 </div>
