@@ -42,6 +42,8 @@
 <!-- end of send text form -->
 <%= link_to 'Don\'t be shy! Add a new track', search_playlist_path(@playlist) %>
 
+<div id="active-song"></div>
+
 <div id='current_playlist'>
   <div class="current_playlist" id='<%= @playlist.id %>'>
     <% @trackpicks.each do |trackpick| %>
