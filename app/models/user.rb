@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   has_many :trackpicks
   has_many :playlists
   
-  has_many :dragonfly_images
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
