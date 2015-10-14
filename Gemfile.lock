@@ -69,10 +69,6 @@ GEM
     dotenv-rails (2.0.2)
       dotenv (= 2.0.2)
       railties (~> 4.0)
-    dragonfly (1.0.12)
-      addressable (~> 2.3)
-      multi_json (~> 1.0)
-      rack (>= 1.3.0)
     em-http-request (1.1.2)
       addressable (>= 2.3.4)
       cookiejar
@@ -235,7 +231,6 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   dotenv-rails
-  dragonfly (~> 1.0.12)
   faye
   font-awesome-rails
   gravtastic
