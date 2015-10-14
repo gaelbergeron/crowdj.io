@@ -26,7 +26,7 @@ $(document).ready(function(){
 			playlist.push($(this).attr('id'));
 		});
     wavesurfer.load(playlist[0]);
-    $('#active-song').empty();
+    // $('#active-song').empty();
     $('#play-button').hide();
     regExpId = '/.*/(.*)/'
 		trackId = playlist[0].match(regExpId)
@@ -34,7 +34,15 @@ $(document).ready(function(){
 		playingSongDiv = trackToUpdate.parent()
 		playingSongDiv.children('a').hide()
 		playingSongDiv.appendTo('#active-song')
-    });
+		playingSongId = playingSongDiv.attr('id')
+		playlist_id = $('.current_playlist').attr('id')
+		$.ajax({
+			url: '/playlists/'+playlist_id+'/trackpicks/'+playingSongId+'/play',
+			type: 'post'
+		})
+		.done(function(response){
+		});
+  });
 
 
 	var target = $('#current_playlist')[0];
@@ -120,9 +128,12 @@ $(document).ready(function(){
 		playingSongDiv.children('a').hide()
 		playingSongDiv.appendTo('#active-song')
 		playingSongId = playingSongDiv.attr('id')
-		// setTimeout(function(){
-		// 	$(".current_playlist").children(".trackpick#"+playingSongId).remove()
-		// }, 100)
+		playlist_id = $('.current_playlist').attr('id')
+		$.ajax({
+			url: '/playlists/'+playlist_id+'/trackpicks/'+playingSongId+'/play',
+			type: 'post'
+		})
+		.done(function(response){});
 	}
 
 	// An event handler for when a track is loaded and ready to play.
@@ -142,9 +153,6 @@ $(document).ready(function(){
 
 	// Event handler when a track finishes playing
 	wavesurfer.on('finish', function () {
-		// regExpId = '/.*/(.*)/'
-		// trackId = completedTrack.match(regExpId)
-		// trackToUpdate = $('[id*='+trackId[1]+']')
 
 		var playlist_id = $('#current_playlist').children().attr('id')
 		var trackpick_id = $('#active-song').children().attr('id')
@@ -153,29 +161,21 @@ $(document).ready(function(){
 			url: '/playlists/'+playlist_id+'/trackpicks/'+trackpick_id,
 			type: 'put'
 		})
-		.done(function(response){
-
-			// trackToUpdate.parent().remove()
-		});
+		.done(function(response){});
 
 		$('#active-song').empty();
+
 		playlist = [];
 
 		$('.soundcloud-url').each(function(){
 			playlist.push($(this).attr('id'));
 		});
 
-		// if (i >= playlist.length - 1) {
 		if (playlist.length === 0) {
-			wavesurfer.stop();
+			wavesurfer.stop()
 		}
 		else {
 			playTrack(0)
-
-			// completedTrack = playlist[i];
-			// i++;
-			// playTrack(i);
-			// playlist.splice(i-1, 1);
 		}
 
 	});
