@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :dragonfly_images
   resources :twilio
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
@@ -41,12 +40,7 @@ Rails.application.routes.draw do
 
     get 'users/profile' => 'users#show'
     get 'playlist/users/profile' => 'users#show'
-# for image upload dragonfly
-    get "text/:text" => Dragonfly.app.endpoint { |params, app| app.generate(:text, params[:text], 'font-size' => 42)
-    }
 
-    get "image" => Dragonfly.app.endpoint { |params, app| app.fetch_file("some/dir/#{params[:file]}").thumb(params[:size])
-    }
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

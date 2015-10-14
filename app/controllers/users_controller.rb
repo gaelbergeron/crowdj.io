@@ -10,6 +10,10 @@ class UsersController < ApplicationController
         format.xml { render :xml => @user }
     end
 
+    def user_params
+    	params.require(:user).permit(:picture_url, :username, :email)
+    end
+
 	end
 
 
