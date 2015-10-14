@@ -26,12 +26,12 @@ gem 'devise'
 
 gem 'dotenv-rails'
 gem 'soundcloud'
-gem 'dragonfly', '~> 1.0.12'
 gem 'gravtastic'
 gem 'twilio-ruby', '~> 4.2.1'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'pusher'
+gem 'dragonfly', '~> 1.0.12'
 
 gem 'faye'
 gem 'thin', require: false

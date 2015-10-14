@@ -9,6 +9,7 @@
           <%= f.hidden_field :title, :value => track.title %>
           <%= f.hidden_field :track_url, :value => track.stream_url %>
           <%= f.hidden_field :artwork_url, :value => track.artwork_url %>
+          <%= f.hidden_field :soundcloud_url, :value => track.permalink_url %>
           <%= f.submit %>
         <% end %>
       </div>
