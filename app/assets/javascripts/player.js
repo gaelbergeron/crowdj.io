@@ -125,8 +125,8 @@ $(document).ready(function(){
 		trackId = playlist[number].match(regExpId)
 		trackToUpdate = $('[id*='+trackId[1]+']')
 		playingSongDiv = trackToUpdate.parent()
-		playingSongDiv.children('a').hide()
-		playingSongDiv.appendTo('#active-song')
+		// playingSongDiv.children('a').hide()
+		// playingSongDiv.appendTo('#active-song')
 		playingSongId = playingSongDiv.attr('id')
 		playlist_id = $('.current_playlist').attr('id')
 		$.ajax({
