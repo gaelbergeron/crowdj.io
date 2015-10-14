@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+        <p class="text-center"><a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Share Via Text</a></p>
+    </div>
+</div>
+<!-- END # BOOTSNIP INFO -->
+
+<!-- BEGIN # MODAL LOGIN -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header" align="center">
+        <%= image_tag("cat_animated.gif", id: "img_logo", class: "img-circle") %>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+     </div>
+
+  <!-- Begin # DIV Form -->
+    <div id="div-forms">
+    <!-- Begin # Login Form -->
+    <form id="send-text-form" action="twilio/send_text" method="post">
+      <div class="modal-body">
+          <div id="div-login-msg">
+            <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right">
+            </div>
+            <span id="text-login-msg">Add 10 digit phone numbers</span>
+          </div>
+          <%= text_field_tag 'tel', nil, class: "form-control", placeholder: "Eg. 4155555454 7025555454" %>
+      </div>
+      <div class="modal-footer">
+        <div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Send Texts</button>
+        </div>
+      </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
