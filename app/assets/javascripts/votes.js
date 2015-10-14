@@ -11,7 +11,7 @@ $(document).on("crowdj:playlists_show", function(){
 var upVote = function(e){
   e.preventDefault();
   var trackpickId = $(this).parent().parent().attr('id')
-  // debugger
+
   $.ajax({
     method:'POST',
     url:'/votes',
@@ -45,12 +45,12 @@ var downVote = function(e){
 };
 
 $(function(){
-  $(".increment").click(function(){    
+  $(".increment").click(function(){
 
     $(this).parent().addClass("bump");
-    
+
     setTimeout(function(){
-      $(this).parent().removeClass("bump");    
+      $(this).parent().removeClass("bump");
     }, 400);
   });
 });

@@ -26,16 +26,12 @@ gem 'devise'
 
 gem 'dotenv-rails'
 gem 'soundcloud'
-gem 'dragonfly', '~> 1.0.12'
 gem 'gravtastic'
 gem 'twilio-ruby', '~> 4.2.1'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'pusher'
 
-gem 'faye'
-gem 'thin', require: false
-gem 'sync'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -57,7 +53,7 @@ group :development do
 
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # gem 'spring'
   gem 'font-awesome-rails'
   gem 'wavesurfer'
 end
