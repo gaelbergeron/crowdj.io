@@ -17,25 +17,25 @@
           </button>
        </div>
 
-    <!-- Begin # DIV Form -->
-      <div id="div-forms">
-      <!-- Begin # Login Form -->
-      <form id="send-text-form" action="twilio/send_text" method="post">
-        <div class="modal-body">
-            <div id="div-login-msg">
-              <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right">
-              </div>
-              <span id="text-login-msg">Add 10 digit phone numbers</span>
+        <!-- Begin # DIV Form -->
+        <div id="div-forms">
+        <!-- Begin # Login Form -->
+          <form id="send-text-form" action="twilio/send_text" method="post">
+            <div class="modal-body">
+                <div id="div-login-msg">
+                  <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right">
+                  </div>
+                  <span id="text-login-msg">Text as many peeps as you want. 10 digits only!</span>
+                </div>
+                <%= text_field_tag 'tel', nil, class: "form-control", placeholder: "Eg. 4155555454 7025555454" %>
             </div>
-            <%= text_field_tag 'tel', nil, class: "form-control", placeholder: "Eg. 4155555454 7025555454" %>
-        </div>
-        <div class="modal-footer">
-          <div>
-              <button type="submit" class="btn btn-primary btn-lg btn-block">Send Texts</button>
+            <div class="modal-footer">
+              <div>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Send Texts, yo</button>
+              </div>
+            </div>
+          </form>
           </div>
-        </div>
-        </form>
-        </div>
       </div>
     </div>
   </div>
@@ -75,14 +75,14 @@
 
       <div id="control-bar">
         <div class="player-control">
-          <div id="previous-button" title="Previous"><i class="fa fa-fast-backward"></i></div>
-          <div id="play-button" title="Play"><i class="fa fa-play"></i></div>
-          <div id="pause-button" title="Pause"><i class="fa fa-pause"></i></div>
-          <div id="next-button" title="Next"><i class="fa fa-fast-forward"></i></div>
+          <div id="previous-button" title="Previous"><i class="fa fa-fast-backward fa-2x"></i></div>
+          <div id="play-button" title="Play"><i class="fa fa-play fa-2x"></i></div>
+          <div id="pause-button" title="Pause"><i class="fa fa-pause fa-2x"></i></div>
+          <div id="next-button" title="Next"><i class="fa fa-fast-forward fa-2x"></i></div>
         </div>
       </div>
 
-      <div id="pop-up">Dudette, dude: are you sure you wanto to cock block your pals?</div>
+      <div id="pop-up"><strong>Dudette, dude: are you sure?</strong> Don't be such a downer, respect your friends' decisions!</div>
 
       <div id="track-details" >
         <p id="track-time">
