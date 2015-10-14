@@ -10,6 +10,7 @@ include TrackpicksHelper
 
 
 	def create
+
     @playlist = Playlist.where(id: params[:playlist_id]).first
 		@track = TrackpicksHelper.find_init_track(params)
 

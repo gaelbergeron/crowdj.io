@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get 'users/profile' => 'users#show'
     get 'playlist/users/profile' => 'users#show'
 
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
