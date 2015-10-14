@@ -8,3 +8,203 @@ div#pop-up {
   border: 1px solid #1a1a1a;
   font-size: 90%;
 }
+
+#playlist-container {
+  width: 100%;
+  display:block;
+  margin: auto;
+}
+
+.trackpick {
+  width: 100%;
+  margin: auto;
+  display: inline-block;
+  margin-top: 7em;
+}
+
+#active-song {
+  margin-top: 2em;
+}
+
+#on-air {
+  color: red;
+  font-weight: 900;
+  font-size: 1.7em;
+}
+
+#too-late {
+  margin-top: -16px;
+  font-size:1em;
+}
+
+#playlist-name {
+  font-size: 3em;
+  width: 100%;
+  border-bottom-color: rgb(242, 242, 242);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 0.5em;
+}
+
+#shy {
+  float: left;
+  width: 8em;
+  height: 2.2em;
+  font-size: 2em;
+  margin-bottom: 1em;
+  margin-top: 0.7em;
+}
+
+.add-track {
+  text-align:center;
+  vertical-align: middle;
+  border-radius: 15px;
+  background-color: #a0c263;
+  float: left;
+  width: 30%;
+  height: 3em;
+  color: white;
+  margin-left: 1em;
+  margin-top: 0.6em;
+  font-size: 1.5em;
+  padding-top: 0.7em;
+}
+
+.and-friend {
+  text-align: center;
+  border-radius: 15px;
+  background-color: #49c4db;
+  float: left;
+  width: 30%;
+  height: 3em;
+  color: white;
+  margin-left: 1em;
+  margin-top: 0.6em;
+  font-size: 1.5em;
+  padding-top: 0.7em;
+}
+
+#playing-img {
+  border-style: solid;
+  border-color: red;
+  border-width: 3px;
+}
+
+#header-buttons {
+  border-bottom-color: rgb(242, 242, 242);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  height: 6.5em;
+}
+
+.roundrect {
+  float: left;
+}
+
+#track-details {
+  float: left;
+  margin-top: 1.5em;
+}
+
+#track-title {
+  font-size: 1.5em;
+}
+
+/*********Vote buttons*********/
+
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
+/* try 50% */
+.roundrect .up {
+  border-radius: 2rem 2rem 0 0;
+}
+.roundrect .down {
+  border-radius: 0 0 2rem 2rem;
+}
+.roundrect .count {
+  border-radius: .5rem .5rem;
+}
+
+.vote {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: "Noto Sans";
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  margin: 1rem;
+}
+
+.increment {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 0;
+      -ms-flex: 1 0 0;
+          flex: 1 0 0;
+  text-align: center;
+  opacity: .5;
+  -webkit-transition: 0.3s;
+          transition: 0.3s;
+  cursor: pointer;
+}
+.increment.up {
+  background: #4BC35F;
+  height: 50%;
+  margin-bottom: 0.25rem;
+}
+.increment.down {
+  background: #C15044;
+  height: 50%;
+}
+.increment:hover {
+  opacity: 1;
+}
+
+.count {
+  position: absolute;
+  top: 0;
+  border-radius: 0.1rem;
+  margin: 2.5rem;
+  background: #F6F3E4;
+  width: 5rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 5rem;
+  text-align: center;
+  box-shadow: 0 0 0 0.5rem #F6F3E4;
+  pointer-events: none;
+}
+.count.upvoted {
+  color: #4BC35F;
+}
+.count.downvoted {
+  color: #C15044;
+}
+
+.bump {
+  -webkit-animation: bump 200ms;
+          animation: bump 200ms;
+}
+
+@-webkit-keyframes bump {
+  30% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+@keyframes bump {
+  30% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
