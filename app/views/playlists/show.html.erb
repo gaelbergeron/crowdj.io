@@ -1,12 +1,6 @@
 <div id="playlist-container">
 
-  <div id="playlist-name">
-    Enjoy <strong><%= @playlist.name %></strong>
-  </div>
      <!-- beginning send text divs -->
-  <div class="row">
-        <p class="text-center"><a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Share Via Text</a></p>
-  </div>
 
   <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
@@ -47,26 +41,26 @@
   </div>
 
   <!-- end of send text form -->
-  <%= link_to 'Don\'t be shy! Add a new track', search_playlist_path(@playlist) %>
-  
-    <div id="shy">
-      And don't be shy!
-    </div>
-    <div class="add-track">
-      <%= link_to 'Add tracks', search_playlist_path(@playlist) %>
-    </div>
-    <div class="and-friend">
-      And friends!
-    </div>
-
-  <div id="active-song">
-    <% if @active_trackpick %>
-      <%= render partial: 'active_song', locals: {trackpick: @active_trackpick} %>
-    <% end %>
+  <div id="playlist-name">
+    Enjoy <strong><%= @playlist.name %></strong>
   </div>
-
-
-
+    <div id="header-buttons">
+      <div id="shy">
+        And don't be shy!
+      </div>
+      <div class="add-track">
+        <%= link_to 'Add tracks', search_playlist_path(@playlist) %>
+      </div>
+      <div class="and-friend">
+        <a data-toggle="modal" data-target="#login-modal">and friends!</a>
+      </div>
+    </div>
+  
+    <div id="active-song">
+      <% if @active_trackpick %>
+        <%= render partial: 'active_song', locals: {trackpick: @active_trackpick} %>
+      <% end %>
+    </div>
 
     <div id='current_playlist'>
       <div class="current_playlist" id='<%= @playlist.id %>'>
