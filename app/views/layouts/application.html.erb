@@ -35,7 +35,7 @@
                     <a>All you need is love</a>
                 </li>
                 <li>
-                    <a href="http://localhost:3000/"><strong>Home</strong></a>
+                    <a href="/"><strong>Home</strong></a>
                 </li>
                       <%if user_signed_in? %>
                 <li>
@@ -45,7 +45,8 @@
                     <%= link_to "Profile", users_profile_path %>
                 </li>
                 <li>
-                    <a href="#"></i><strong>Create a new playlist</strong></a>
+                    <!-- <a href="#"></i><strong>Create a new playlist</strong></a> -->
+                    <%= link_to "Create a new playlist", new_playlist_path %>
                 </li>
                 <li>
                     <a href="/logout"><strong>Logout</strong></a>
