@@ -6,6 +6,11 @@ $(document).on("crowdj:playlists_show", function(){
   channel.bind('add_trackpick', function(data) {
     $(".current_playlist#"+playlistId).parent().replaceWith(data)
     });
+
+  channel.bind('add_single_trackpick', function(data) {
+    $(".current_playlist#"+playlistId).append(data)
+  });
+
   channel.bind('vote', function(data) {
     $(".current_playlist#"+playlistId).parent().replaceWith(data)
   });
