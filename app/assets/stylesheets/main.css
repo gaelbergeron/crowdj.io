@@ -90,6 +90,11 @@ div#pop-up {
 
 #search-instructions {
   font-size: 2em;
+  padding-bottom: 1em;
+}
+
+#result-instructions {
+  font-size: 2em;
 }
 
 #personal {
