@@ -7,7 +7,6 @@ $(document).on("crowdj:playlists_show", function(){
     $(".current_playlist#"+playlistId).parent().replaceWith(data)
     });
   channel.bind('vote', function(data) {
-    debugger
     $(".current_playlist#"+playlistId).parent().replaceWith(data)
   });
   channel.bind('remove', function(data) {
