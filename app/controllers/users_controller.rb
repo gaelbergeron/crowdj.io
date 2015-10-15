@@ -10,10 +10,6 @@ class UsersController < ApplicationController
     end
 
     def show_user_past_playlists
-        p "i am in User create method"
-        p current_user.id
-        p params
-
 
     end
 
