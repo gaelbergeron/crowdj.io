@@ -1,6 +1,6 @@
 $(document).on("crowdj:playlists_show", function(){
   var playlistId = $('.current_playlist').attr('id')
-  var pusher = new Pusher('5f012bb92b08e2d2910f')
+  var pusher = new Pusher('70a25e4c8340eaf4621f')
   var channel =  pusher.subscribe('playlist'+playlistId)
 
   channel.bind('add_trackpick', function(data) {
