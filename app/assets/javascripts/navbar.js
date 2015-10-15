@@ -3,9 +3,11 @@ $(document).ready(function () {
       overlay = $('.overlay'),
      isClosed = false;
 
-    trigger.click(function () {
-      hamburger_cross();      
+    $('#page-content-wrapper').on('click','.hamburger',function (e) {
+      e.preventDefault();
+      hamburger_cross(); 
     });
+
 
     function hamburger_cross() {
 
@@ -14,15 +16,19 @@ $(document).ready(function () {
         trigger.removeClass('is-open');
         trigger.addClass('is-closed');
         isClosed = false;
+        // location.reload(true);
       } else {   
         overlay.show();
         trigger.removeClass('is-closed');
         trigger.addClass('is-open');
         isClosed = true;
+        // location.reload(true);
       }
-  }
+
+    }
   
-  $('[data-toggle="offcanvas"]').click(function () {
-        $('#wrapper').toggleClass('toggled');
+  $('#page-content-wrapper').on('click', '[data-toggle="offcanvas"]', function () {
+    $('#wrapper').toggleClass('toggled');
   });  
+      // 
 });

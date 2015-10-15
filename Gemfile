@@ -31,6 +31,11 @@ gem 'twilio-ruby', '~> 4.2.1'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'pusher'
+gem 'jquery-turbolinks'
+gem 'rack-cache', :require => 'rack/cache'
+gem 'font-awesome-rails'
+gem 'wavesurfer'
+gem 'web-console', '~> 2.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -48,13 +53,10 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-	gem 'rack-cache', :require => 'rack/cache'
 
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
-  gem 'font-awesome-rails'
-  gem 'wavesurfer'
+
 end
 

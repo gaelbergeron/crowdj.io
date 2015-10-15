@@ -1,12 +1,12 @@
 div#pop-up {
   display: none;
   /*position: absolute;*/
-  width: 280px;
+  width: 100%;
   padding: 10px;
-  background: #eeeeee;
+  background: #F2C6C1;
   color: #000000;
-  border: 1px solid #1a1a1a;
-  font-size: 90%;
+  border: 1px solid red;
+  font-size: 1.3em;
 }
 
 #playlist-container {
@@ -26,10 +26,15 @@ div#pop-up {
   margin-top: 2em;
 }
 
+#trackpick-active {
+  margin-top: 2em;
+}
+
 #on-air {
   color: red;
   font-weight: 900;
-  font-size: 1.7em;
+  font-size: 2.5em;
+  padding-top: 2em;
 }
 
 #too-late {
@@ -84,6 +89,50 @@ div#pop-up {
   padding-top: 0.7em;
 }
 
+#search-instructions {
+  font-size: 2em;
+}
+
+#personal {
+  padding-bottom: 2em;
+}
+
+#submit-search {
+  text-align: center;
+  border-radius: 15px;
+  background-color: #49c4db;
+  width: 100%;
+  height: 2em;
+  color: white;
+  font-size: 1.5em;
+}
+
+#save-trackpick {
+  border-radius: 15px;
+  background-color: #a0c263;
+  width: 14.5em;
+  height: 2em;
+  color: white;
+  font-size: 1.5em;
+}
+
+#result-title {
+  font-size: 1.5em;
+}
+
+#search-field {
+  border-radius: 15px;
+  width: 100%;
+  border: 1px solid grey;
+  text-align: center;
+  height: 2.5em;
+
+}
+
+#searched-tracks {
+  margin-bottom: 3.5em;
+}
+
 #playing-img {
   border-style: solid;
   border-color: red;
@@ -104,15 +153,156 @@ div#pop-up {
 #track-details {
   float: left;
   margin-top: 1.5em;
+  width: 41em;
+}
+#track-date {
+  padding-left: 2.5em;
+}
+#track-time {
+  font-size: 2em;
+  margin-left: 10em;
 }
 
 #track-title {
   font-size: 1.5em;
 }
 
+.player-control{
+  -webkit-flex: 2;
+  flex:2;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.player-control div{
+  -webkit-flex: 1;
+  flex: 1;
+  background-color: #fff;
+  text-align: center;
+  line-height: 80px;
+  height: 100%;
+  cursor: pointer;
+}
+
+#current_playlist {
+  padding-bottom: 3em;
+}
+
+.modal-content {
+  width: 30em;
+}
+
+a#dbc-link {
+  color: black;
+  text-decoration: none;
+}
+
+#credits {
+  display: inline-block;
+  padding: 1em;
+  margin: auto;
+}
+
+span.inner-credit {
+  margin-left: 2em;
+}
+
+#wave {
+  background-color: white;
+  display: inherit;
+  margin-top: 4em;
+  padding-top: 2em;
+}
+
+div#permalink {
+  float: left;
+  position: relative;
+  margin-top: -0.1em;
+}
+
+.damn {
+  font-size: 1.9em;
+  color: black; 
+  margin-bottom: 2em; 
+}
+
+.damn a:hover{
+  color: black;
+}
+
+video#bgvid {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+  /*background: url(polina.jpg) no-repeat;*/
+}
+
+#overlay {
+  position: absolute; 
+  top: 100px; 
+  color: #FFF; 
+  text-align: center;
+  font-size: 20px;
+  background-color: rgba(221, 221, 221, 0.3);
+  width: 640px;
+  padding: 10px 0;
+  z-index: 2147483647;
+}
+
+.video-wrapper {
+  position: fixed;
+}
+
+#logo {
+  color: white;
+  font-size: em;
+}
+
+#welcome-page {
+  font-size: 13em;
+  color: white;
+  font-weight: 900;
+}
+
+#tagline {
+  color: white;
+  font-size: 3.1em;
+  margin-left: 0.8em;
+}
+
+#homepage-details {
+  margin-left: 11em;
+  padding-top: 1.6em;
+}
+
+.access-homepage {
+  font-size: 2em;
+  color: white;
+}
+
+#homepage-new-way {
+  margin-top: 8em;
+  color: white;
+  font-size: 2em;
+  margin-right: 16em;
+  padding-bottom: 
+}
+
+#SC-home-logo{
+  /*display: inline-block;*/
+}
+
 /*********Vote buttons*********/
 
-@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
 /* try 50% */
 .roundrect .up {
   border-radius: 2rem 2rem 0 0;
