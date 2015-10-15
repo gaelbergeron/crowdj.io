@@ -18,6 +18,7 @@ var upVote = function(e){
 
   .done(function(response){
     $(this).closest('div').children('.count').html(response.partial);
+    $('.trackpick#'+trackpickId).children('#track-details').children('p#vote-error').append(response.locals.error[0]);
   })
 };
 
@@ -34,6 +35,7 @@ var downVote = function(e){
 
   .done(function(response){
     $(this).closest('div').children('.count').html(response.partial);
+    $('.trackpick#'+trackpickId).children('#track-details').children('p#vote-error').append(response.locals.error[0]);
   })
 
 };
