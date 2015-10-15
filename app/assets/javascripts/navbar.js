@@ -3,8 +3,10 @@ $(document).ready(function () {
       overlay = $('.overlay'),
      isClosed = false;
 
-    trigger.click(function () {
-      hamburger_cross();      
+    $('#page-content-wrapper').on('click','.hamburger',function (e) {
+      e.preventDefault();
+      hamburger_cross(); 
+      console.log("Hello")     
     });
 
     function hamburger_cross() {
@@ -22,7 +24,7 @@ $(document).ready(function () {
       }
   }
   
-  $('[data-toggle="offcanvas"]').click(function () {
+  $('#page-content-wrapper').on('click', '[data-toggle="offcanvas"]', function () {
         $('#wrapper').toggleClass('toggled');
   });  
 });

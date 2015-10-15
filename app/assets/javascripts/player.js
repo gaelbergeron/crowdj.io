@@ -26,7 +26,6 @@ $(document).ready(function(){
 			playlist.push($(this).attr('id'));
 		});
     wavesurfer.load(playlist[0]);
-    // $('#active-song').empty();
     $('#play-button').hide();
     regExpId = '/.*/(.*)/'
 		trackId = playlist[0].match(regExpId)
@@ -71,9 +70,9 @@ $(document).ready(function(){
 
 	$('#pause-button').on('click', function () {
 		wavesurfer.playPause();
-		if ($('#pause-button').html() === '<i class="fa fa-pause"></i>' ){
-			$('#pause-button').html('<i class="fa fa-play"></i>')
-		} else { $('#pause-button').html('<i class="fa fa-pause"></i>') }
+		if ($('#pause-button').html() === '<i class="fa fa-pause fa-2x"></i>' ){
+			$('#pause-button').html('<i class="fa fa-play fa-2x"></i>')
+		} else { $('#pause-button').html('<i class="fa fa-pause fa-2x"></i>') }
 	});
 
 	$('#next-button').on('click', function () {
@@ -125,8 +124,8 @@ $(document).ready(function(){
 		trackId = playlist[number].match(regExpId)
 		trackToUpdate = $('[id*='+trackId[1]+']')
 		playingSongDiv = trackToUpdate.parent()
-		playingSongDiv.children('a').hide()
-		playingSongDiv.appendTo('#active-song')
+		// playingSongDiv.children('a').hide()
+		// playingSongDiv.appendTo('#active-song')
 		playingSongId = playingSongDiv.attr('id')
 		playlist_id = $('.current_playlist').attr('id')
 		$.ajax({
@@ -155,7 +154,7 @@ $(document).ready(function(){
 	wavesurfer.on('finish', function () {
 
 		var playlist_id = $('#current_playlist').children().attr('id')
-		var trackpick_id = $('#active-song').children().attr('id')
+		var trackpick_id = $('#active-song').children('.trackpick').attr('id')
 
 		$.ajax({
 			url: '/playlists/'+playlist_id+'/trackpicks/'+trackpick_id,

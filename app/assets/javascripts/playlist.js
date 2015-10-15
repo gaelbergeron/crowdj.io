@@ -11,6 +11,7 @@ function sentText(){
   var $eventTarget = $('form');
   $('#send-text-form').on('submit', function(e){
     e.preventDefault();
+    console.log('Click firing')
 
     var data = $(this).serialize();
     var controller_destination = "/" + $eventTarget.attr('action');

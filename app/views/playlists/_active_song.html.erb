@@ -1,12 +1,12 @@
 <p id="on-air">On Air!</p>
 <p id="too-late">Too late to vote :-)</p>
-<div class='trackpick' id="<%= trackpick.id %>" >
+<div class='trackpick-active' id="<%= trackpick.id %>" >
   <img id="playing-img" src="<%= trackpick.track.artwork_url.to_s.gsub('-large', '-t500x500') %>"></img>
   <br>
   <div class="soundcloud-url" id="<%= trackpick.track.track_url + '?client_id=' + ENV['CLIENT_ID'] %>"></div>
   <%= trackpick.track.title %>
   <p id="vote-count<%=trackpick.id%>"><%=trackpick.votecount%></p>
   <p>
-    Added on <%= trackpick.created_at.strftime("%F") %>
+    Added <%= time_ago_in_words(trackpick.created_at) %> ago
   </p>
 </div>

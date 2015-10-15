@@ -10,6 +10,7 @@ include TrackpicksHelper
 
 
 	def create
+
     @playlist = Playlist.where(id: params[:playlist_id]).first
 		@track = TrackpicksHelper.find_init_track(params)
 
@@ -21,7 +22,6 @@ include TrackpicksHelper
 
         if @trackpick.save
           @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
-
           Pusher.trigger("playlist#{@playlist.id}", 'add_trackpick', render_to_string('/playlists/_show_trackpicks', :layout => false))
           redirect_to playlist_path(@playlist)
         else
@@ -35,6 +35,7 @@ include TrackpicksHelper
 
   def update
     @trackpick = Trackpick.find(params[:id])
+
     @trackpick.update(status: "Played")
 
     @playlist = Playlist.where(:id => params[:playlist_id]).first
