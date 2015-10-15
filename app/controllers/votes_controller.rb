@@ -19,6 +19,7 @@ class VotesController < ApplicationController
     @playlist = @trackpick.playlist
 
     @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
+    p @playlist
     Pusher.trigger("playlist#{@playlist.id}", 'vote', render_to_string('/playlists/_show_trackpicks', :layout => false))
 
     if request.xhr?
@@ -27,6 +28,5 @@ class VotesController < ApplicationController
       redirect_to playlist_path(@playlist)
     end
   end
-
 
 end
