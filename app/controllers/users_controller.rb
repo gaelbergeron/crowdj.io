@@ -9,14 +9,6 @@ class UsersController < ApplicationController
         format.xml { render :xml => @user }
     end
 
-    def show_user_past_playlists
-        p "i am in User create method"
-        p current_user.id
-        p params
-
-
-    end
-
     def user_params
     	params.require(:user).permit(:picture_url, :username, :email)
     end
