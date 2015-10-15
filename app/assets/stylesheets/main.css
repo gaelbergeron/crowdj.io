@@ -33,7 +33,7 @@ div#pop-up {
 #on-air {
   color: red;
   font-weight: 900;
-  font-size: 1.7em;
+  font-size: 2.5em;
 }
 
 #too-late {
@@ -88,6 +88,42 @@ div#pop-up {
   padding-top: 0.7em;
 }
 
+#submit-search {
+  text-align: center;
+  border-radius: 15px;
+  background-color: #49c4db;
+  width: 100%;
+  height: 2em;
+  color: white;
+  font-size: 1.5em;
+}
+
+#save-trackpick {
+  border-radius: 15px;
+  background-color: #a0c263;
+  width: 14.5em;
+  height: 2em;
+  color: white;
+  font-size: 1.5em;
+}
+
+#result-title {
+  font-size: 1.5em;
+}
+
+#search-field {
+  border-radius: 15px;
+  width: 100%;
+  border: 1px solid grey;
+  text-align: center;
+  height: 2.5em;
+
+}
+
+#searched-tracks {
+  margin-bottom: 3.5em;
+}
+
 #playing-img {
   border-style: solid;
   border-color: red;
@@ -109,6 +145,9 @@ div#pop-up {
   float: left;
   margin-top: 1.5em;
   width: 41em;
+}
+#track-date {
+  padding-left: 2.5em;
 }
 #track-time {
   font-size: 2em;
@@ -159,7 +198,23 @@ span.inner-credit {
   background-color: white;
   display: inherit;
   margin-top: 4em;
-  padding-top: 3em;
+  padding-top: 7em;
+}
+
+div#permalink {
+  float: left;
+  position: relative;
+  margin-top: -0.1em;
+}
+
+.damn {
+  font-size: 1.9em;
+  color: black; 
+  margin-bottom: 2em; 
+}
+
+.damn a:hover{
+  color: black;
 }
 
 /*********Vote buttons*********/

@@ -1,18 +1,20 @@
 <%@tracks.each do |track|%>
   <div id="searched-tracks">
-    <p><%= track.title%></p>
     <div id="art">
      <img src="<%=track.artwork_url.to_s.gsub('-large', '-t300x300')%>"></img>
     </div>
+    <p id="result-title"><%= track.title%></p>
       <div id="add">
         <%= form_for :trackpick, url: playlist_trackpicks_path(@playlist), method: "post" do |f| %>
           <%= f.hidden_field :title, :value => track.title %>
           <%= f.hidden_field :track_url, :value => track.stream_url %>
           <%= f.hidden_field :artwork_url, :value => track.artwork_url %>
           <%= f.hidden_field :soundcloud_url, :value => track.permalink_url %>
-          <%= f.submit %>
+          <%= f.submit :id => 'save-trackpick' %>
         <% end %>
       </div>
   </div>
 <%end%>
-  <%= link_to 'Damn, I need to search again!', search_playlist_path(@playlist) %>
+  <div class="damn">
+    <%= link_to 'Damn, I need to search again!',  search_playlist_path(@playlist), :class => 'damn' %>
+  </div>

@@ -1,9 +1,8 @@
 <%= form_for :search, url: results_playlist_path, method: "post" do |f| %>
   <p>
-    <%= f.label :Search %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :id => 'search-field' %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit :id => 'submit-search' %>
   </p>
 <% end %>
