@@ -24,7 +24,11 @@ class PlaylistsController < ApplicationController
     if @playlist.save
       redirect_to @playlist
     else
-     @playlist_errors = @playlist.errors.full_messages[0]
+      if current_user
+        @playlist_errors = @playlist.errors.full_messages[0]
+      else
+        @login_error = "Please login to create a new playlist: "
+      end
       render 'new'
     end
 
@@ -52,8 +56,6 @@ class PlaylistsController < ApplicationController
   end
 
   def show_past_playlist
-    p params
-    p "i am in show past playlist"
   end
 
   private

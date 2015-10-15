@@ -154,7 +154,7 @@ $(document).ready(function(){
 	wavesurfer.on('finish', function () {
 
 		var playlist_id = $('#current_playlist').children().attr('id')
-		var trackpick_id = $('#active-song').children('.trackpick').attr('id')
+		var trackpick_id = $('#active-song').children('.trackpick-active').attr('id')
 
 		$.ajax({
 			url: '/playlists/'+playlist_id+'/trackpicks/'+trackpick_id,

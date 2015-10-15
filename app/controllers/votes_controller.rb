@@ -1,9 +1,7 @@
 class VotesController < ApplicationController
 
   def create
-    p "*" * 50
-    p params
-    p "*" * 50
+
     @trackpick = Trackpick.where(:id => params[:trackpick]).first
     # Isolates the users that have voted
     voters = []
@@ -21,7 +19,17 @@ class VotesController < ApplicationController
     @playlist = @trackpick.playlist
 
     @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
-    Pusher.trigger("playlist#{@playlist.id}", 'vote', render_to_string('/playlists/_show_trackpicks', :layout => false))
+
+    if @trackpicks.length <= 10
+      Pusher.trigger("playlist#{@playlist.id}", 'vote', render_to_string('/playlists/_show_trackpicks', :layout => false))
+    else
+      @trackpicks_rest = @trackpicks[10..-1]
+      @trackpicks = @trackpicks[0..9]
+      Pusher.trigger("playlist#{@playlist.id}", 'vote', render_to_string('/playlists/_show_trackpicks', :layout => false))
+      @trackpicks_rest.each do |trackpick|
+        Pusher.trigger("playlist#{@playlist.id}", 'add_single_trackpick', render_to_string('/playlists/_show_track', :layout => false , locals: {trackpick: trackpick}))
+      end
+    end
 
     if request.xhr?
       render :json => {:partial => render_to_string('/playlists/_show_trackpicks', layout: false)}

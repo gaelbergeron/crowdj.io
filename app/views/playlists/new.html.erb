@@ -4,6 +4,9 @@
   <% if @playlist_errors %>
     <p><%= "Playlist #{@playlist_errors.downcase}" %></p>
   <% end %>
+  <% if @login_error %>
+    <p><%="#{@login_error}"%><%= link_to 'Login', login_path %></p>
+  <% end %>
 </div>
 
 <%= form_for :playlist, url: playlists_path, method: "post" do |f| %>
@@ -12,7 +15,7 @@
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :user_id, value: current_user ? current_user.id : nil %>
   </p>
   <p>
     <%= f.submit %>
