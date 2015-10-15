@@ -12,7 +12,7 @@
           <%= f.hidden_field :track_url, :value => track.stream_url %>
           <%= f.hidden_field :artwork_url, :value => track.artwork_url %>
           <%= f.hidden_field :soundcloud_url, :value => track.permalink_url %>
-          <%= f.submit :id => 'save-trackpick' %>
+          <%= f.submit("Add it", :id => 'save-trackpick') %>
         <% end %>
       </div>
   </div>
