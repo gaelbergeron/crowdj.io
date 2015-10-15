@@ -1,0 +1,19 @@
+<div class="video-wrapper">
+  <%= video_tag "house-party.mp4", :autobuffer => true, :autoplay => true, :loop => true, :id => "bgvid" %>
+  <h1 id="welcome-page"><%= image_tag("C-white-200.png") %>rowdj</h1>
+  <h2 id="tagline">The way crowds listen to music</h2>
+    <div id="homepage-details">
+        <%if user_signed_in? %>
+      <span class="access-homepage">Join the movement, start a playlist</span>
+        <%else%>
+      <span class="access-homepage"><%= link_to "Login", login_path %></span>
+      <span class="access-homepage"> or </span>
+      <span class="access-homepage" ><%= link_to "Sign up", new_user_registration_path %> to get started</span>
+        <%end%>
+    </div>
+      <p id="homepage-new-way">A new way to share the moment with your friends, powered by <iframe id="SC-home-logo" allowtransparency="true" scrolling="no" frameborder="no" src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2F&color=black_white&size=40" style="width: 40px; height: 40px;"></iframe></p>
+</div>
+
+<!-- <div div="overlay">
+  Welcome to Crowdj!
+</div> -->
