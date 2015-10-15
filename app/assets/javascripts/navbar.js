@@ -6,8 +6,8 @@ $(document).ready(function () {
     $('#page-content-wrapper').on('click','.hamburger',function (e) {
       e.preventDefault();
       hamburger_cross(); 
-      console.log("Hello")     
     });
+
 
     function hamburger_cross() {
 
@@ -16,15 +16,19 @@ $(document).ready(function () {
         trigger.removeClass('is-open');
         trigger.addClass('is-closed');
         isClosed = false;
+        // location.reload(true);
       } else {   
         overlay.show();
         trigger.removeClass('is-closed');
         trigger.addClass('is-open');
         isClosed = true;
+        // location.reload(true);
       }
-  }
+
+    }
   
   $('#page-content-wrapper').on('click', '[data-toggle="offcanvas"]', function () {
-        $('#wrapper').toggleClass('toggled');
+    $('#wrapper').toggleClass('toggled');
   });  
+      // 
 });
