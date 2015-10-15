@@ -39,7 +39,7 @@
                 </li>
                       <%if user_signed_in? %>
                 <li>
-                    <a href="#"><strong>Logged in as <%= current_user.email%></strong></a>
+                    <a href="#"><strong>Logged in as <%= current_user.username%></strong></a>
                 </li>
                 <li>
                     <%= link_to "Profile", users_profile_path %>
