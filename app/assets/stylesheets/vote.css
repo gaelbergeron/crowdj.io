@@ -5,6 +5,11 @@
 
   }
 
+  #login-vote-error{
+    color:#ff4c4c;
+    margin-left: 0.2em;
+  }
+
   @media(max-width: 500px){
     #vote-error{
       margin-left: 0.1em;

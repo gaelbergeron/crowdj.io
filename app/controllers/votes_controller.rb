@@ -8,16 +8,16 @@ class VotesController < ApplicationController
     @trackpick.votes.each do |vote|
        voters << vote.user_id
     end
-
     # checks if the current_user.id is included in the array and lets them vote or not vote
-    if voters.uniq.include?(current_user.id)
+    if !user_signed_in?
+      @login_vote_error_message = "Have FOMO and CAN'T vote? Please login"
+    elsif voters.uniq.include?(current_user.id)
       @vote_error_message = "You have already voted, please vote on another song"
     else
       @vote = Vote.create(:trackpick_id => params[:trackpick],:user_id => current_user.id, value: params[:value])
     end
 
     @playlist = @trackpick.playlist
-
     @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
 
     if @trackpicks.length <= 10
