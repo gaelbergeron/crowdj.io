@@ -51,6 +51,11 @@ class PlaylistsController < ApplicationController
   def destroy
   end
 
+  def show_past_playlist
+    p params
+    p "i am in show past playlist"
+  end
+
   private
     def playlist_params
       params.require(:playlist).permit(:name, :user_id)
