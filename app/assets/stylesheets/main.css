@@ -90,6 +90,11 @@ div#pop-up {
 
 #search-instructions {
   font-size: 2em;
+  padding-bottom: 1em;
+}
+
+#result-instructions {
+  font-size: 2em;
 }
 
 #personal {
@@ -270,6 +275,7 @@ video#bgvid {
 #homepage-details {
   margin-left: 11em;
   padding-top: 1.6em;
+  margin-bottom: -3em;
 }
 
 .access-homepage {

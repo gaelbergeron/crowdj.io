@@ -55,6 +55,39 @@
         <a href="#" class="add-friends" role="button" data-toggle="modal" data-target="#login-modal">and friends!</a>
       </div>
     </div>
+    <div id="active-song">
+      <% if @active_trackpick %>
+        <%= render partial: 'active_song', locals: {trackpick: @active_trackpick} %>
+      <% end %>
+    </div>
+
+    <div id='current_playlist'>
+      <div class="current_playlist" id='<%= @playlist.id %>'>
+        <% @trackpicks.each do |trackpick| %>
+            <%= render partial: 'show_track', locals: {trackpick: trackpick} %>
+        <% end %>
+      </div>
+    </div>
+    
+    <% if current_user && @playlist.user_id == current_user.id %>
+    <div id="wave"></div>
+
+      <div id="control-bar">
+        <div class="player-control">
+          <div id="play-button" title="Play"><i class="fa fa-play fa-2x"></i></div>
+          <div id="pause-button" title="Pause"><i class="fa fa-pause fa-2x"></i></div>
+          <div id="next-button" title="Next"><i class="fa fa-fast-forward fa-2x"></i></div>
+        </div>
+      </div>
+
+      <div id="pop-up"><strong>Dudette, dude: are you sure?</strong> Don't be such a downer, respect your friends' decisions!</div>
+
+      <div id="track-details" >
+        <p id="track-time">
+          <span id="current">-</span> / <span id="total">-</span>
+        </p>
+      </div>
+    <% end %>
 
     <div id="active-song">
       <% if @active_trackpick %>
@@ -70,27 +103,6 @@
       </div>
     </div>
 
-    <% if current_user && @playlist.user_id == current_user.id %>
-    <div id="wave"></div>
-
-      <div id="control-bar">
-        <div class="player-control">
-          <div id="previous-button" title="Previous"><i class="fa fa-fast-backward fa-2x"></i></div>
-          <div id="play-button" title="Play"><i class="fa fa-play fa-2x"></i></div>
-          <div id="pause-button" title="Pause"><i class="fa fa-pause fa-2x"></i></div>
-          <div id="next-button" title="Next"><i class="fa fa-fast-forward fa-2x"></i></div>
-        </div>
-      </div>
-
-      <div id="pop-up"><strong>Dudette, dude: are you sure?</strong> Don't be such a downer, respect your friends' decisions!</div>
-
-      <div id="track-details" >
-        <p id="track-time">
-          <span id="current">-</span> / <span id="total">-</span>
-        </p>
-      </div>
-
-    <% end %>
   </div>
 </div>
 
