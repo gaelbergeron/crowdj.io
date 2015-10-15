@@ -11,7 +11,7 @@ class VotesController < ApplicationController
 
     # checks if the current_user.id is included in the array and lets them vote or not vote
     if voters.uniq.include?(current_user.id)
-      return
+      @vote_error_message = "You have already voted, please vote on another song"
     else
       @vote = Vote.create(:trackpick_id => params[:trackpick],:user_id => current_user.id, value: params[:value])
     end

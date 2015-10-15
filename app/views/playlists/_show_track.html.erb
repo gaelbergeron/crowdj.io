@@ -9,6 +9,9 @@
     </div>
     <div id="track-details">
       <p id="track-title"><%= trackpick.track.title %></p>
+        <% if @vote_error_message %>
+          <p id="vote-error"><%= @vote_error_message %></p>
+       <%end%>
       <div id="permalink">
         <%= link_to image_tag("black_white_24x24.png", :size => "35x35"), trackpick.track.soundcloud_url, :target => "_blank" %>
       </div>

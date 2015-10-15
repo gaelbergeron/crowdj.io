@@ -1,0 +1,15 @@
+
+
+#vote-error{
+  color:#ff4c4c;
+  margin-left: 4.4em;
+  margin-top: -2.3em;
+
+  }
+
+  @media(max-width: 500px){
+    #vote-error{
+      margin-left: 0.1em;
+      margin-top: -0.5em;
+    }
+  }
