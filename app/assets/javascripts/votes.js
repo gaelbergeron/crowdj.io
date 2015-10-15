@@ -11,7 +11,7 @@ $(document).on("crowdj:playlists_show", function(){
 var upVote = function(e){
   e.preventDefault();
   var trackpickId = $(this).parent().parent().attr('id')
-  console.log('i upvote')
+
   $.ajax({
     method:'POST',
     url:'/votes',
@@ -21,8 +21,6 @@ var upVote = function(e){
 
   .done(function(response){
     // $('#current_playlist').replaceWith(response.partial);
-    console.log("upvote response")
-    debugger
     $(this).closest('div').children('.count').html(response.partial);
   })
 

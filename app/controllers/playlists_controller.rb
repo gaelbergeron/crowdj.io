@@ -52,8 +52,6 @@ class PlaylistsController < ApplicationController
   end
 
   def show_past_playlist
-    p params
-    p "i am in show past playlist"
   end
 
   private
