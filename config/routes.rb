@@ -36,10 +36,11 @@ Rails.application.routes.draw do
 
     resources :votes
 
-    resources :users, only: [:show, :avatar]
+    resources :users 
 
     get 'users/profile' => 'users#show'
     get 'playlist/users/profile' => 'users#show'
+    match 'users/show_past_playlists' => 'playlists#show', via: "post"
 
 
   # Example of regular route:

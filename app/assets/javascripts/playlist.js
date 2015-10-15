@@ -6,6 +6,7 @@ $(document).ready(function(){
 
 });
 
+
 function sentText(){
   var $eventTarget = $('form');
   $('#send-text-form').on('submit', function(e){
@@ -18,12 +19,16 @@ function sentText(){
 
     $.post(controller_destination, {phone: data, url: url} )
     .done(function(returnData){
-      
-      $('.modal-content').css('display', 'none')
-  
+
+    $('#login-modal').hide('close');
+    location.reload(true);
+
+
     }).fail(function(jqXHR, textStatus){
       alert(jqXHR + textStatus)
     });
   });
 };
+
+
 

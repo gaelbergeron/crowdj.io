@@ -27,7 +27,7 @@
 
     <div id="wrapper">
         <div class="overlay"></div>
-    
+
         <!-- Sidebar -->
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
@@ -39,7 +39,7 @@
                 </li>
                       <%if user_signed_in? %>
                 <li>
-                    <a href="#"><strong>Logged in as <%= current_user.email%></strong></a>
+                    <a href="#"><strong>Logged in as <%= current_user.username%></strong></a>
                 </li>
                 <li>
                     <%= link_to "Profile", users_profile_path %>
@@ -74,7 +74,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <h1 class="page-header"><%= image_tag("c-80.png") %>rowdj</h1>  
+                        <h1 class="page-header"><%= image_tag("c-80.png") %>rowdj</h1>
                         <%= yield %>
                         <div id="credits">
                           <span class="inner-credit">Made with <i class="fa fa-heart"></i> @ <a id="dbc-link" href="http://www.devbootcamp.com">Dev Bootcamp SF</a></span>  <span class="inner-credit">Powered by  <iframe allowtransparency="true" scrolling="no" frameborder="no" src="https://w.soundcloud.com/icon/?url=http%3A%2F%2Fsoundcloud.com%2F&color=black_white&size=16" style="width: 16px; height: 16px;"></iframe></span>
