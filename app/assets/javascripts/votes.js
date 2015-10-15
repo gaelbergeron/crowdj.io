@@ -20,7 +20,6 @@ var upVote = function(e){
   .done(function(response){
     $(this).closest('div').children('.count').html(response.partial);
   })
-
 };
 
 var downVote = function(e){

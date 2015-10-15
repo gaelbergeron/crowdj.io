@@ -17,8 +17,6 @@ function addEditForm(){
 		e.preventDefault();
 	})
 
-
-
 };
 
 

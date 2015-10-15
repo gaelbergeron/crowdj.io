@@ -35,28 +35,29 @@
                     <a>All you need is love</a>
                 </li>
                 <li>
-                    <%= link_to "Home", root_path %>
-                </li>
-                      <%if user_signed_in? %>
-                <li>
-                    <a href="#"><strong>Logged in as <%= current_user.username%></strong></a>
+                  <%= link_to "Home", root_path %>
                 </li>
                 <li>
-                    <%= link_to "Profile", users_profile_path %>
+                  <%=link_to "Create a new Playlist", new_playlist_path %>
                 </li>
-                <li>
-                    <a href="#"></i><strong>Create a new playlist</strong></a>
-                </li>
-                <li>
-                    <a href="/logout"><strong>Logout</strong></a>
-                </li>
-                <%else%>
-                <li>
-                    <a href="#"><%= link_to "Login", login_path %></a>
-                </li>
-                <li>
-                    <a href="#"><%= link_to "Sign up", new_user_registration_path %></a>
-                </li>
+                <%if user_signed_in? %>
+                  <li>
+                   <%= link_to "#{current_user.username}", users_profile_path %>
+                  </li>
+                  <li>
+                      <%= link_to "Logout", logout_path %>
+                  </li>
+                   <li>
+                      <%= link_to "Create a new Playlist", new_playlist_path %>
+                  </li>
+                  <%else%>
+                  <li>
+                      <%= link_to "Login", login_path %>
+                  </li>
+                  <li>
+                      <%= link_to "Sign up", new_user_registration_path %>
+                  </li>
+
                  <%end%>
             </ul>
         </nav>

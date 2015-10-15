@@ -44,12 +44,6 @@
   <div id="playlist-name">
     Enjoy <strong><%= @playlist.name %></strong>
   </div>
-    <%if !user_signed_in? %>
-      <div id="user-not-logged">
-        <p>Hey there! The NSA just informed us that you are not logged in.</p>
-        <p>As a guest, you can always add tracks but can't vote. Get real: <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Login", login_path %> now!</p>
-      </div>
-    <% end %>
     <div id="header-buttons">
       <div id="shy">
         And don't be shy!
@@ -61,7 +55,7 @@
         <a href="#" class="add-friends" role="button" data-toggle="modal" data-target="#login-modal">and friends!</a>
       </div>
     </div>
-  
+
     <div id="active-song">
       <% if @active_trackpick %>
         <%= render partial: 'active_song', locals: {trackpick: @active_trackpick} %>
