@@ -98,10 +98,6 @@ div#pop-up {
   font-size: 2em;
 }
 
-#new-playlist-error {
-  color: black;
-}
-
 #personal {
   padding-bottom: 2em;
 }
@@ -323,7 +319,6 @@ video#bgvid {
   color: white;
   font-size: 2em;
   margin-right: 16em;
-  padding-bottom: 
 }
 
 #SC-home-logo{
