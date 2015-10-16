@@ -1,4 +1,4 @@
-<div div="search-instructions">Peruse SoundCloud tracks, it's free and awesome</div>
+<div id="search-instructions">Browse SoundCloud tracks, it's free and awesome</div>
 <%= form_for :search, url: results_playlist_path, method: "post" do |f| %>
   <p>
     <%= f.text_field :name, :id => 'search-field' %>
