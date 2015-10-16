@@ -326,6 +326,19 @@ video#bgvid {
   /*display: inline-block;*/
 }
 
+#welcome-spiel {
+  margin-top: -10em;
+}
+
+#start-playlist {
+  text-decoration: underline;
+}
+
+#bottom-logo {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+}
 /*********Vote buttons*********/
 
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
