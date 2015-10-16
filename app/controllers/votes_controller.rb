@@ -9,8 +9,10 @@ class VotesController < ApplicationController
        voters << vote.user_id
     end
     # checks if the current_user.id is included in the array and lets them vote or not vote
+
     if !user_signed_in?
       @login_vote_error_message = "Have FOMO and can't vote? Please login"
+      @vote_errors << @login_vote_error_message
     elsif voters.uniq.include?(current_user.id)
       @vote_error_message = "You have already voted, please vote on another song"
       @vote_errors << @vote_error_message
@@ -33,12 +35,13 @@ class VotesController < ApplicationController
       end
     end
 
+
+
     if request.xhr?
       render :json => {:partial => render_to_string('/playlists/_show_trackpicks', layout: false), locals: {error: @vote_errors}}
     else
       redirect_to playlist_path(@playlist)
     end
   end
-
 
 end

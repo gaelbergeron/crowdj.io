@@ -37,7 +37,6 @@ var downVote = function(e){
     $(this).closest('div').children('.count').html(response.partial);
     $('.trackpick#'+trackpickId).children('#track-details').children('p#vote-error').append(response.locals.error[0]);
   })
-
 };
 
 $(function(){
