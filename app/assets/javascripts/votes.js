@@ -1,4 +1,5 @@
 $(document).on("crowdj:playlists_show", function(){
+
   $('body').on('click','a.up',upVote);
   $('body').on('click','a.down',downVote);
 
