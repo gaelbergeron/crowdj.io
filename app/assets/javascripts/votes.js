@@ -1,4 +1,5 @@
 $(document).on("crowdj:playlists_show", function(){
+
   $('body').on('click','a.up',upVote);
   $('body').on('click','a.down',downVote);
 
@@ -17,7 +18,10 @@ var upVote = function(e){
   })
 
   .done(function(response){
-    $(this).closest('div').children('.count').html(response.partial);
+
+    // $(this).closest('div').children('.count').html(response.partial);
+
+    $('.trackpick#'+trackpickId).children('#track-details').children('p#vote-error').html(response.locals.error[0]);
   })
 };
 
@@ -33,9 +37,9 @@ var downVote = function(e){
   })
 
   .done(function(response){
-    $(this).closest('div').children('.count').html(response.partial);
+    // $(this).closest('div').children('.count').html(response.partial);
+    $('.trackpick#'+trackpickId).children('#track-details').children('p#vote-error').html(response.locals.error[0]);
   })
-
 };
 
 $(function(){
