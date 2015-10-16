@@ -5,7 +5,7 @@
     <h2 id="tagline">The way crowds listen to music</h2>
       <div id="homepage-details">
           <%if user_signed_in? %>
-        <span class="access-homepage">Join the movement, start a playlist</span>
+        <span class="access-homepage">Join the movement, <%= link_to "start a playlist", new_playlist_path, :id => 'start-playlist' %></span>
           <%else%>
         <span class="access-homepage"><%= link_to "Login", login_path %></span>
         <span class="access-homepage"> or </span>
