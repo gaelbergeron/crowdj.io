@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
 
   def create
-
+    @vote_errors = []
     @trackpick = Trackpick.where(:id => params[:trackpick]).first
     # Isolates the users that have voted
     voters = []
@@ -10,14 +10,17 @@ class VotesController < ApplicationController
     end
     # checks if the current_user.id is included in the array and lets them vote or not vote
     if !user_signed_in?
-      @login_vote_error_message = "Have FOMO and CAN'T vote? Please login"
+      @login_vote_error_message = "Have FOMO and can't vote? Please login"
+      @vote_errors << @login_vote_error_message
     elsif voters.uniq.include?(current_user.id)
       @vote_error_message = "You have already voted, please vote on another song"
+      @vote_errors << @vote_error_message
     else
       @vote = Vote.create(:trackpick_id => params[:trackpick],:user_id => current_user.id, value: params[:value])
     end
 
     @playlist = @trackpick.playlist
+
     @trackpicks = @playlist.trackpicks.where(:status => 'unPlayed').sort_by {|track| [-track.votecount,track.created_at]}
 
     if @trackpicks.length <= 10
@@ -32,11 +35,10 @@ class VotesController < ApplicationController
     end
 
     if request.xhr?
-      render :json => {:partial => render_to_string('/playlists/_show_trackpicks', layout: false)}
+      render :json => {:partial => render_to_string('/playlists/_show_trackpicks', layout: false), locals: {error: @vote_errors}}
     else
       redirect_to playlist_path(@playlist)
     end
   end
-
 
 end
