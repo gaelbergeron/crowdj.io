@@ -9,7 +9,6 @@ class VotesController < ApplicationController
        voters << vote.user_id
     end
     # checks if the current_user.id is included in the array and lets them vote or not vote
-
     if !user_signed_in?
       @login_vote_error_message = "Have FOMO and can't vote? Please login"
       @vote_errors << @login_vote_error_message
@@ -34,8 +33,6 @@ class VotesController < ApplicationController
         Pusher.trigger("playlist#{@playlist.id}", 'add_single_trackpick', render_to_string('/playlists/_show_track', :layout => false , locals: {trackpick: trackpick}))
       end
     end
-
-
 
     if request.xhr?
       render :json => {:partial => render_to_string('/playlists/_show_trackpicks', layout: false), locals: {error: @vote_errors}}
