@@ -98,6 +98,10 @@ div#pop-up {
   font-size: 2em;
 }
 
+#new-playlist-error {
+  color: black;
+}
+
 #personal {
   padding-bottom: 2em;
 }
