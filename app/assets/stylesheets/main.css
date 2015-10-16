@@ -321,6 +321,10 @@ video#bgvid {
   margin-right: 16em;
 }
 
+a#new-playlist-error {
+  color: black;
+}
+
 #SC-home-logo{
   /*display: inline-block;*/
 }
