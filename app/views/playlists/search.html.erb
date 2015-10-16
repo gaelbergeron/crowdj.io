@@ -1,8 +1,9 @@
+<div div="search-instructions">Peruse SoundCloud tracks, it's free and awesome</div>
 <%= form_for :search, url: results_playlist_path, method: "post" do |f| %>
   <p>
     <%= f.text_field :name, :id => 'search-field' %>
   </p>
   <p>
-    <%= f.submit :id => 'submit-search' %>
+    <%= f.submit("Let's go!", :id => 'submit-search') %>
   </p>
 <% end %>

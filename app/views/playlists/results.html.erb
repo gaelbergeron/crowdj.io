@@ -1,3 +1,5 @@
+<div id="result-instructions">Time to shine, pick a track and impress your friends</div>
+<p id="personal">Don't take it personal if you get downvoted :-)</p>
 <%@tracks.each do |track|%>
   <div id="searched-tracks">
     <div id="art">
@@ -10,7 +12,7 @@
           <%= f.hidden_field :track_url, :value => track.stream_url %>
           <%= f.hidden_field :artwork_url, :value => track.artwork_url %>
           <%= f.hidden_field :soundcloud_url, :value => track.permalink_url %>
-          <%= f.submit :id => 'save-trackpick' %>
+          <%= f.submit("Add it", :id => 'save-trackpick') %>
         <% end %>
       </div>
   </div>
