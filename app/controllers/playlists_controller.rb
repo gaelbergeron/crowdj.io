@@ -12,6 +12,11 @@ class PlaylistsController < ApplicationController
 
   def new
     @playlist = Playlist.new
+    
+    if !current_user.nil?
+      @my_playlists = Playlist.where(user_id: current_user.id)
+    end
+    
   end
 
   def edit
@@ -20,6 +25,7 @@ class PlaylistsController < ApplicationController
   def create
 
     @playlist = Playlist.new(playlist_params)
+
 
     if @playlist.save
       redirect_to @playlist

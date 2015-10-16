@@ -1,5 +1,6 @@
 div#pop-up {
   display: none;
+  /*position: absolute;*/
   width: 100%;
   padding: 10px;
   background: #F2C6C1;
@@ -133,10 +134,28 @@ div#pop-up {
 
 }
 
-
-
 #searched-tracks {
   margin-bottom: 3.5em;
+}
+
+.search-field {
+  border-radius: 15px;
+  width: 100%;
+  border: 1px solid grey;
+  text-align: center;
+  height: 3em;
+
+}
+
+.submit-search {
+  padding-top: .20em;
+  text-align: center;
+  border-radius: 15px;
+  background-color: #49c4db;
+  width: 100%;
+  height: 2em;
+  color: white;
+  font-size: 1.5em;
 }
 
 #playing-img {
@@ -251,19 +270,31 @@ video#bgvid {
   /*background: url(polina.jpg) no-repeat;*/
 }
 
+#overlay {
+  position: absolute; 
+  top: 100px; 
+  color: #FFF; 
+  text-align: center;
+  font-size: 20px;
+  background-color: rgba(221, 221, 221, 0.3);
+  width: 640px;
+  padding: 10px 0;
+  z-index: 2147483647;
+}
+
 .video-wrapper {
   position: fixed;
 }
 
 #logo {
   color: white;
+  font-size: em;
 }
 
 #welcome-page {
   font-size: 13em;
   color: white;
   font-weight: 900;
-
 }
 
 #tagline {
@@ -284,24 +315,33 @@ video#bgvid {
 }
 
 #homepage-new-way {
-  margin-top: 2em;
+  margin-top: 8em;
   color: white;
   font-size: 2em;
-  padding-top: 3em;
-  /*bottom: 2em;*/
-  padding-left: 5.5em;
-  /*margin: auto 0;*/
+  margin-right: 16em;
 }
 
-#cloud{
-  padding-bottom: 1em;
+a#new-playlist-error {
+  color: black;
+}
+
+#SC-home-logo{
+  /*display: inline-block;*/
 }
 
 #welcome-spiel {
   margin-top: -10em;
 }
 
+#start-playlist {
+  text-decoration: underline;
+}
 
+#bottom-logo {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+}
 /*********Vote buttons*********/
 
 @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
